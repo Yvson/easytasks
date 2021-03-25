@@ -1,0 +1,195 @@
+{% extends "gerador_base.html" %}
+
+{% load static %}
+
+{% block title %} Easytasks - Gerador {% endblock %}
+
+{% block gerador_content %}
+<div id="gerador-numbers-grid">
+    <div id="gerador-numbers-input">
+        <form id="gerador-numbers-form" action="" method="post">
+            <div class="input-data-div">
+                <label form="gerador-numbers-form">Limite Inferior:</label><br>
+                <input class="input-data-form"
+                    type="number"
+                    id="lower-limit-input"
+                    name="lower-limit-input"
+                    placeholder="Valor Mínimo"
+                    step="1"
+                    required
+                >
+            </div>
+            <div class="input-data-div">
+                <label form="gerador-numbers-form">Limite Superior:</label><br>
+                <input class="input-data-form"
+                    type="number"
+                    id="upper-limit-input"
+                    name="upper-limit-input"
+                    placeholder="Valor Máximo"
+                    step="1"
+                    required
+                >
+            </div>
+            <div class="input-data-div">
+                <label form="gerador-numbers-form">Quantidade de Números:</label><br>
+                <input class="input-data-form"
+                    type="number"
+                    id="quantity-numbers-input"
+                    name="quantity-numbers-input"
+                    placeholder="Quantos números?"
+                    step="1"
+                    required
+                >
+            </div>
+            <div class="input-data-div">
+                <label form="gerador-numbers-form">Quantidade de Colunas:</label><br>
+                <input class="input-data-form"
+                    type="number"
+                    id="quantity-columns-input"
+                    name="quantity-columns-input"
+                    placeholder="Quantas colunas?"
+                    step="1"
+                    required
+                >
+            </div>
+            <div class="input-data-div">
+                <label form="gerador-numbers-form">Ordem dos Números:</label><br>
+                <select class="input-data-select"
+                    type="number"
+                    id="numbers-order-input"
+                    name="numbers-order-input"
+                    size="1"
+                    required
+                >
+                    <option value="no-order">Sem Ordem</option>
+                    <option value="asc">Crescente</option>
+                    <option value="des">Decrescente</option>
+                </select>
+            </div>
+            <div class="input-data-div">
+                <label form="gerador-numbers-form">Repetição:</label>
+                <br>
+                <label class="checkbox-container" id="label-repetition">Permitir Repetição
+                    <input class="checkbox-repetition"
+                        type="checkbox"
+                        id="repetition-input"
+                        name="repetition-input"
+                    >
+                    <span class="checkbox-checkmark"></span>
+                </label>
+            </div>
+            <div class="buttons-form-div">
+                <button class="gerador-generate-button"> Gerar </button>
+                <button class="gerador-save-button"> Salvar </button>
+            </div>
+        {% csrf_token %}
+        </form>
+
+    </div>
+  
+    <div id="gerador-numbers-generated">
+        <h3 id="numbers-generated-title"> Números Gerados </h3>
+        <div id="numbers-generated">
+            <h4> 10  -  12  -  25  -  50  -  75  -  100 - 114 - 125 - 130 </h4>
+            <h4> 10  -  12  -  25  -  50  -  75  -  100 - 114 - 125 - 130 </h4>
+            <h4> 10  -  12  -  25  -  50  -  75  -  100 - 114 - 125 - 130 </h4>
+            <h4> 10  -  12  -  25  -  50  -  75  -  100 - 114 - 125 - 130 </h4>
+            <h4> 10  -  12  -  25  -  50  -  75  -  100 - 114 - 125 - 130 </h4>
+            <h4> 10  -  12  -  25  -  50  -  75  -  100 - 114 - 125 - 130 </h4>
+            <h4> 10  -  12  -  25  -  50  -  75  -  100 - 114 - 125 - 130 </h4>
+            <h4> 10  -  12  -  25  -  50  -  75  -  100 - 114 - 125 - 130 </h4>
+            <h4> 10  -  12  -  25  -  50  -  75  -  100 - 114 - 125 - 130 </h4>
+            <h4> 10  -  12  -  25  -  50  -  75  -  100 - 114 - 125 - 130 </h4>
+            <h4> 10  -  12  -  25  -  50  -  75  -  100 - 114 - 125 - 130 </h4>
+            <h4> 10  -  12  -  25  -  50  -  75  -  100 - 114 - 125 - 130 </h4>
+            <h4> 10  -  12  -  25  -  50  -  75  -  100 - 114 - 125 - 130 </h4>
+            <h4> 10  -  12  -  25  -  50  -  75  -  100 - 114 - 125 - 130 </h4>
+            <h4> 10  -  12  -  25  -  50  -  75  -  100 - 114 - 125 - 130 </h4>
+            <h4> 10  -  12  -  25  -  50  -  75  -  100 - 114 - 125 - 130 </h4>
+            <h4> 10  -  12  -  25  -  50  -  75  -  100 - 114 - 125 - 130 </h4>
+            <h4> 10  -  12  -  25  -  50  -  75  -  100 - 114 - 125 - 130 </h4>
+            <h4> 10  -  12  -  25  -  50  -  75  -  100 - 114 - 125 - 130 </h4>
+            <h4> 10  -  12  -  25  -  50  -  75  -  100 - 114 - 125 - 130 </h4>
+            <h4> 10  -  12  -  25  -  50  -  75  -  100 - 114 - 125 - 130 </h4>
+            <h4> 10  -  12  -  25  -  50  -  75  -  100 - 114 - 125 - 130 </h4>
+        </div>
+
+    </div>
+
+    <div id="gerador-numbers-table">
+        <div id="gerador-table-frame">
+            <table id="gerador-saved-numbers-table">
+                <tr>        
+                    <th id="gerador-head-date">Data</th>
+                    <th id="gerador-head-numbers">Números</th>
+                    <th id="gerador-head-actions">Ações</th>
+                </tr>
+                <!-- This row will be replaced by a For tag -->                
+                <tr>        
+                    <td class="gerador-table-data">21/01/2021(15:54)</td>
+                    <td class="gerador-table-data">10  -  12  -  25  -  50  -  75  -  100 - 114 - 125 - 130</td>
+                    <td class="gerador-table-data">
+                        <i class="material-icons delete_icon">delete_forever</i>
+                    </td>
+                </tr>
+                <tr>        
+                    <td class="gerador-table-data">21/01/2021(15:54)</td>
+                    <td class="gerador-table-data">10  -  12  -  25  -  50  -  75  -  100 - 114 - 125 - 130</td>
+                    <td class="gerador-table-data">
+                        <i class="material-icons delete_icon">delete_forever</i>
+                    </td>
+                </tr>
+                <tr>        
+                    <td class="gerador-table-data">21/01/2021(15:54)</td>
+                    <td class="gerador-table-data">10  -  12  -  25  -  50  -  75  -  100 - 114 - 125 - 130</td>
+                    <td class="gerador-table-data">
+                        <i class="material-icons delete_icon">delete_forever</i>
+                    </td>
+                </tr>
+                <tr>        
+                    <td class="gerador-table-data">21/01/2021(15:54)</td>
+                    <td class="gerador-table-data">10  -  12  -  25  -  50  -  75  -  100 - 114 - 125 - 130</td>
+                    <td class="gerador-table-data">
+                        <i class="material-icons delete_icon">delete_forever</i>
+                    </td>
+                </tr>
+                <tr>        
+                    <td class="gerador-table-data">21/01/2021(15:54)</td>
+                    <td class="gerador-table-data">10  -  12  -  25  -  50  -  75  -  100 - 114 - 125 - 130</td>
+                    <td class="gerador-table-data">
+                        <i class="material-icons delete_icon">delete_forever</i>
+                    </td>
+                </tr>
+                <tr>        
+                    <td class="gerador-table-data">21/01/2021(15:54)</td>
+                    <td class="gerador-table-data">10  -  12  -  25  -  50  -  75  -  100 - 114 - 125 - 130</td>
+                    <td class="gerador-table-data">
+                        <i class="material-icons delete_icon">delete_forever</i>
+                    </td>
+                </tr>
+                <tr>        
+                    <td class="gerador-table-data">21/01/2021(15:54)</td>
+                    <td class="gerador-table-data">10  -  12  -  25  -  50  -  75  -  100 - 114 - 125 - 130</td>
+                    <td class="gerador-table-data">
+                        <i class="material-icons delete_icon">delete_forever</i>
+                    </td>
+                </tr>
+                <tr>        
+                    <td class="gerador-table-data">21/01/2021(15:54)</td>
+                    <td class="gerador-table-data">10  -  12  -  25  -  50  -  75  -  100 - 114 - 125 - 130</td>
+                    <td class="gerador-table-data">
+                        <i class="material-icons delete_icon">delete_forever</i>
+                    </td>
+                </tr>
+                
+
+            </table>
+        </div>
+    </div>
+
+    <div id="gerador-numbers-adsense">
+        <h1 id="gerador-text-adsense"> Google Adsense </h1>
+    </div>
+
+</div>
+{% endblock %}

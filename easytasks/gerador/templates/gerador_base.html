@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %} Easytasks - Gerador {% endblock %}
+
+{% block content %}
+
+<div class="gerador-page">
+    <h1 id="page-title"> Gerador </h1>
+
+    <hr id="horizontal-line">
+
+    <div class="gerador-page-menu">
+        <ul class="gerador-menu-list">
+            <a href="{% url 'numbers_view' %}">
+                <li class="gerador-menu-option" id="numbers-option">
+                    Números
+                </li>
+            </a>
+            <a href="{% url 'passwords_view' %}">
+                <li class="gerador-menu-option" id="passwords-option">
+                    Senhas
+                </li>
+            </a>
+        </ul>
+    </div>
+ 
+    <div id="gerador-page-content">
+        {% block gerador_content %}
+        
+        {% endblock %}
+    </div>
+
+{% endblock %}
+

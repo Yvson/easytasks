@@ -1,0 +1,222 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %} Easytasks - Conversor de Unidades {% endblock %}
+
+{% block content %}
+<div class="conversor-page">
+    <h1 id="page-title"> Conversor de Unidades </h1>
+
+    <hr id="horizontal-line">
+
+
+    <div class="conversor-page-menu">
+        <ul class="conversor-menu-list">
+            <li class="conversor-menu-option" id="mass-option">Massa</li>
+            <li class="conversor-menu-option" id="time-option">Tempo</li>
+            <li class="conversor-menu-option" id="length-option">Comprimento</li>
+            <li class="conversor-menu-option" id="area-option">Área</li>
+            <li class="conversor-menu-option" id="volume-option">Volume</li>
+            <li class="conversor-menu-option" id="speed-option">Velocidade</li>
+            <li class="conversor-menu-option" id="aceleration-option">Aceleração</li>
+            <li class="conversor-menu-option" id="force-option">Força</li>
+            <li class="conversor-menu-option" id="pressure-option">Pressão</li>
+            <li class="conversor-menu-option" id="temperature-option">Temperatura</li>
+        </ul>
+    </div>
+ 
+    <div id="conversor-page-content">
+
+        <div id="conversor-grid">
+            <div id="conversor-form">
+
+                <div id="conversor-form-input">
+                    <div class="input-div">
+                        <label for="from-input">De:</label><br>
+                        <input class="input-data-form"
+                            type="number"
+                            id="from-number-input"
+                            name="from-number-input"
+                            placeholder="Insira o Valor"
+                            step="any"
+                        >
+                    </div>
+                        <i class="material-icons pause">pause</i>
+                    <div class="input-div">
+                        <label for="to-input">Para:</label><br>
+                        <input class="input-data-form"
+                            type="number"
+                            id="to-number-input"
+                            name="to-number-input"
+                            placeholder="Insira o Valor"
+                            step="any"
+                        >
+                    </div>
+                </div>
+
+                <div id="conversor-form-units">
+                    <select name="from-unit" id="from-unit" size="41">
+                    </select>
+
+                    <i class="material-icons double-arrow">swap_horiz</i>
+
+                    <select name="to-unit" id="to-unit" size="41">
+                    </select>
+
+                </div>
+                
+
+            </div>
+            
+            <div id="conversor-table">
+                <div id="conversor-table-buttons">
+                    <button class="conversor-button">Salvar</button>
+                </div>
+                <div id="conversor-table-frame">
+                    <table id="conversor-table-saved">
+                        <tr>
+                            <th id="conversor-head-date">Data</th>
+                            <th id="conversor-head-from">De</th>
+                            <th id="conversor-head-to">Para</th>
+                            <th id="conversor-head-actions">Ações</th>
+                        </tr>
+                        <!-- This row will be replaced by a For tag -->
+                        <tr>
+                            <td class="conversor-table-data">21/01/2021(15:54)</td>
+                            <td class="conversor-table-data">1 kg</td>
+                            <td class="conversor-table-data">1000 g</td>
+                            <td class="conversor-data-actions">
+                                <i class="material-icons delete_icon">delete_forever</i>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="conversor-table-data">21/01/2021(15:54)</td>
+                            <td class="conversor-table-data">1 kg</td>
+                            <td class="conversor-table-data">1000 g</td>
+                            <td class="conversor-data-actions">
+                                <i class="material-icons delete_icon">delete_forever</i>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="conversor-table-data">21/01/2021(15:54)</td>
+                            <td class="conversor-table-data">1 kg</td>
+                            <td class="conversor-table-data">1000 g</td>
+                            <td class="conversor-data-actions">
+                                <i class="material-icons delete_icon">delete_forever</i>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="conversor-table-data">21/01/2021(15:54)</td>
+                            <td class="conversor-table-data">1 kg</td>
+                            <td class="conversor-table-data">1000 g</td>
+                            <td class="conversor-data-actions">
+                                <i class="material-icons delete_icon">delete_forever</i>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="conversor-table-data">21/01/2021(15:54)</td>
+                            <td class="conversor-table-data">1 kg</td>
+                            <td class="conversor-table-data">1000 g</td>
+                            <td class="conversor-data-actions">
+                                <i class="material-icons delete_icon">delete_forever</i>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="conversor-table-data">21/01/2021(15:54)</td>
+                            <td class="conversor-table-data">1 kg</td>
+                            <td class="conversor-table-data">1000 g</td>
+                            <td class="conversor-data-actions">
+                                <i class="material-icons delete_icon">delete_forever</i>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="conversor-table-data">21/01/2021(15:54)</td>
+                            <td class="conversor-table-data">1 kg</td>
+                            <td class="conversor-table-data">1000 g</td>
+                            <td class="conversor-data-actions">
+                                <i class="material-icons delete_icon">delete_forever</i>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="conversor-table-data">21/01/2021(15:54)</td>
+                            <td class="conversor-table-data">1 kg</td>
+                            <td class="conversor-table-data">1000 g</td>
+                            <td class="conversor-data-actions">
+                                <i class="material-icons delete_icon">delete_forever</i>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="conversor-table-data">21/01/2021(15:54)</td>
+                            <td class="conversor-table-data">1 kg</td>
+                            <td class="conversor-table-data">1000 g</td>
+                            <td class="conversor-data-actions">
+                                <i class="material-icons delete_icon">delete_forever</i>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="conversor-table-data">21/01/2021(15:54)</td>
+                            <td class="conversor-table-data">1 kg</td>
+                            <td class="conversor-table-data">1000 g</td>
+                            <td class="conversor-data-actions">
+                                <i class="material-icons delete_icon">delete_forever</i>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="conversor-table-data">21/01/2021(15:54)</td>
+                            <td class="conversor-table-data">1 kg</td>
+                            <td class="conversor-table-data">1000 g</td>
+                            <td class="conversor-data-actions">
+                                <i class="material-icons delete_icon">delete_forever</i>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="conversor-table-data">21/01/2021(15:54)</td>
+                            <td class="conversor-table-data">1 kg</td>
+                            <td class="conversor-table-data">1000 g</td>
+                            <td class="conversor-data-actions">
+                                <i class="material-icons delete_icon">delete_forever</i>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="conversor-table-data">21/01/2021(15:54)</td>
+                            <td class="conversor-table-data">1 kg</td>
+                            <td class="conversor-table-data">1000 g</td>
+                            <td class="conversor-data-actions">
+                                <i class="material-icons delete_icon">delete_forever</i>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="conversor-table-data">21/01/2021(15:54)</td>
+                            <td class="conversor-table-data">1 kg</td>
+                            <td class="conversor-table-data">1000 g</td>
+                            <td class="conversor-data-actions">
+                                <i class="material-icons delete_icon">delete_forever</i>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="conversor-table-data">21/01/2021(15:54)</td>
+                            <td class="conversor-table-data">1 kg</td>
+                            <td class="conversor-table-data">1000 g</td>
+                            <td class="conversor-data-actions">
+                                <i class="material-icons delete_icon">delete_forever</i>
+                            </td>
+                        </tr>
+              
+                    </table>
+                </div>
+            </div>
+
+            <div id="conversor-adsense">
+                <h1>Google Adsense</h1>
+            </div>
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+{% endblock %}
