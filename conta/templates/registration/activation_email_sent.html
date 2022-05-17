@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %} Easytasks - Ativação {% endblock %}
+
+{% block content %}
+<div class="activation-sent-page">
+
+    <h1 id="page-title"> Ativação. </h1>
+
+    <hr id="horizontal-line">
+
+    <h3 id="page-subtitle"> Link de Ativação Enviado. </h3>
+
+    <div id="main-activation-sent-page-grid">
+    
+        <div id="activation-sent-page-message">
+            <br />
+            <h3>
+                <strong>{{ new_user.first_name }}</strong>, 
+                um email com o link de ativação da sua conta foi enviado para <strong>{{ new_user.email }}</strong>.
+                Para concluir o cadastro, acesse o link enviado.
+            </h3>
+        </div>
+
+        <div id="activation-sent-page-adsense">
+            {% include "adsense_base.html" with personalizedAds=cookies.cookie.cookie_marketing.status %}
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

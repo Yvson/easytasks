@@ -1,0 +1,458 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>
+        {% block title %} Easytasks - Tarefas Simples {% endblock %}
+    </title>
+
+    <link href="{% static 'css/base.css' %}" rel="stylesheet">
+    <link href="{% static 'css/base_mobile.css' %}" rel="stylesheet">
+    <link href="{% static 'css/dashboard/dashboard.css' %}" rel="stylesheet">
+    <link href="{% static 'css/dashboard/dashboard_mobile.css' %}" rel="stylesheet">
+    <link href="{% static 'css/dashboard/404.css' %}" rel="stylesheet">
+    <link href="{% static 'css/conversor/conversor.css' %}" rel="stylesheet">
+    <link href="{% static 'css/conversor/conversor_mobile.css' %}" rel="stylesheet">
+    <link href="{% static 'css/gerador_base.css' %}" rel="stylesheet">
+    <link href="{% static 'css/gerador_base_mobile.css' %}" rel="stylesheet">
+    <link href="{% static 'css/gerador/numbers.css' %}" rel="stylesheet">
+    <link href="{% static 'css/gerador/numbers_mobile.css' %}" rel="stylesheet">
+    <link href="{% static 'css/gerador/passwords.css' %}" rel="stylesheet">
+    <link href="{% static 'css/gerador/passwords_mobile.css' %}" rel="stylesheet">
+    <link href="{% static 'css/texto/texto.css' %}" rel="stylesheet">
+    <link href="{% static 'css/texto/texto_mobile.css' %}" rel="stylesheet">
+    <link href="{% static 'css/cores/cores.css' %}" rel="stylesheet">
+    <link href="{% static 'css/cores/cores_mobile.css' %}" rel="stylesheet">
+    <link href="{% static 'css/tempo_base.css' %}" rel="stylesheet">
+    <link href="{% static 'css/tempo_base_mobile.css' %}" rel="stylesheet">
+    <link href="{% static 'css/tempo/time.css' %}" rel="stylesheet">
+    <link href="{% static 'css/tempo/time_mobile.css' %}" rel="stylesheet">
+    <link href="{% static 'css/tempo/timer.css' %}" rel="stylesheet">
+    <link href="{% static 'css/tempo/timer_mobile.css' %}" rel="stylesheet">
+    <link href="{% static 'css/tempo/stopwatch.css' %}" rel="stylesheet">
+    <link href="{% static 'css/tempo/stopwatch_mobile.css' %}" rel="stylesheet">
+    <link href="{% static 'css/cotacoes_base.css' %}" rel="stylesheet">
+    <link href="{% static 'css/cotacoes_base_mobile.css' %}" rel="stylesheet">
+    <link href="{% static 'css/cotacoes/currencies.css' %}" rel="stylesheet">
+    <link href="{% static 'css/cotacoes/currencies_mobile.css' %}" rel="stylesheet">
+    <link href="{% static 'css/cotacoes/cryptocurrencies.css' %}" rel="stylesheet">
+    <link href="{% static 'css/cotacoes/cryptocurrencies_mobile.css' %}" rel="stylesheet">
+    <link href="{% static 'css/conta_base.css' %}" rel="stylesheet">
+    <link href="{% static 'css/conta/profile.css' %}" rel="stylesheet">
+    <link href="{% static 'css/conta/profile_mobile.css' %}" rel="stylesheet">
+    <link href="{% static 'css/conta/profile_delete.css' %}" rel="stylesheet">
+    <link href="{% static 'css/conta/profile_delete_mobile.css' %}" rel="stylesheet">
+    <link href="{% static 'css/conta/profile_delete_done.css' %}" rel="stylesheet">
+    <link href="{% static 'css/conta/profile_delete_done_mobile.css' %}" rel="stylesheet">
+    <link href="{% static 'css/conta/security.css' %}" rel="stylesheet">
+    <link href="{% static 'css/conta/security_mobile.css' %}" rel="stylesheet">
+    <link href="{% static 'css/conta/security_done.css' %}" rel="stylesheet">
+    <link href="{% static 'css/conta/security_done_mobile.css' %}" rel="stylesheet">
+    <link href="{% static 'css/conta/register.css' %}" rel="stylesheet">
+    <link href="{% static 'css/conta/register_mobile.css' %}" rel="stylesheet">
+    <link href="{% static 'css/conta/register_done.css' %}" rel="stylesheet">
+    <link href="{% static 'css/conta/register_done_mobile.css' %}" rel="stylesheet">
+    <link href="{% static 'css/registration/login.css' %}" rel="stylesheet">
+    <link href="{% static 'css/registration/login_mobile.css' %}" rel="stylesheet">
+    <link href="{% static 'css/registration/logged_out.css' %}" rel="stylesheet">
+    <link href="{% static 'css/registration/logged_out_mobile.css' %}" rel="stylesheet">
+    <link href="{% static 'css/registration/recovery.css' %}" rel="stylesheet">
+    <link href="{% static 'css/registration/recovery_mobile.css' %}" rel="stylesheet">
+    <link href="{% static 'css/registration/recovery_done.css' %}" rel="stylesheet">
+    <link href="{% static 'css/registration/recovery_done_mobile.css' %}" rel="stylesheet">
+    <link href="{% static 'css/registration/reset.css' %}" rel="stylesheet">
+    <link href="{% static 'css/registration/reset_mobile.css' %}" rel="stylesheet">    
+    <link href="{% static 'css/registration/reset_done.css' %}" rel="stylesheet">
+    <link href="{% static 'css/registration/reset_done_mobile.css' %}" rel="stylesheet">
+    <link href="{% static 'css/registration/activation_email_sent.css' %}" rel="stylesheet">
+    <link href="{% static 'css/registration/activation_email_sent_mobile.css' %}" rel="stylesheet">
+    <link href="{% static 'css/registration/activation_email_done.css' %}" rel="stylesheet">
+    <link href="{% static 'css/registration/activation_email_done_mobile.css' %}" rel="stylesheet">
+    <link href="{% static 'css/registration/activation_email_invalid.css' %}" rel="stylesheet">
+    <link href="{% static 'css/registration/activation_email_invalid_mobile.css' %}" rel="stylesheet">
+    <link href="{% static 'css/suporte_base.css' %}" rel="stylesheet">
+    <link href="{% static 'css/suporte_base_mobile.css' %}" rel="stylesheet">
+    <link href="{% static 'css/suporte/about.css' %}" rel="stylesheet">
+    <link href="{% static 'css/suporte/about_mobile.css' %}" rel="stylesheet">
+    <link href="{% static 'css/suporte/terms.css' %}" rel="stylesheet">
+    <link href="{% static 'css/suporte/terms_mobile.css' %}" rel="stylesheet">
+    <link href="{% static 'css/suporte/privacy.css' %}" rel="stylesheet">
+    <link href="{% static 'css/suporte/privacy_mobile.css' %}" rel="stylesheet">
+    <link href="{% static 'css/suporte/contact.css' %}" rel="stylesheet">
+    <link href="{% static 'css/suporte/contact_mobile.css' %}" rel="stylesheet">
+    <link href="{% static 'css/suporte/contact_sent.css' %}" rel="stylesheet">
+    <link href="{% static 'css/suporte/contact_sent_mobile.css' %}" rel="stylesheet">
+
+    <link rel="icon" type="image/png" sizes="48x48" href={% static '/icons/easytasks48px.png' %}>
+    <link rel="icon" type="image/png" sizes="32x32" href={% static '/icons/easytasks32px.png' %}>
+    <link rel="icon" type="image/png" sizes="16x16" href={% static '/icons/easytasks16px.png' %}>
+    <link rel="shortcut icon" type="image/png" href="{% static 'icons/easytasks_icon.ico' %}"/>
+
+</head>
+
+
+<body>
+    <div id="app">
+        <nav id="sidebar">
+            <ul class="top-sidebar">
+                <div class="rect {% if page == 'dashboard' %} rect-selected {% endif %}">
+                    <a href="{% url 'dashboard:dashboard_view' %}">
+                        <i class="material-icons dashboard">dashboard</i>
+                    </a>
+                </div>
+                <div class="rect {% if page == 'conversor' %} rect-selected {% endif %}">
+                    <a href="{% url 'conversor_view' 'massa' %}">
+                        <i class="material-icons conversor">autorenew</i>
+                    </a>
+                </div>
+                <div class="rect {% if page == 'gerador' %} rect-selected {% endif %}">
+                    <a href="{% url 'numbers_view' %}">
+                        <i class="material-icons gerador">calculate</i>
+                    </a>
+                </div>
+                <div class="rect {% if page == 'texto' %} rect-selected {% endif %}">
+                    <a href="{% url 'texto_view' 'letras_maiusculas' %}">
+                        <i class="material-icons texto">text_format</i>
+                    </a>
+                </div>
+                <div class="rect {% if page == 'cores' %} rect-selected {% endif %}">
+                    <a href="{% url 'cores_view' 'analogo' %}">
+                        <i class="material-icons cores">palette</i>
+                    </a>
+                </div>
+                <div class="rect {% if page == 'tempo' %} rect-selected {% endif %}">
+                    <a href="{% url 'time_view' %}">
+                        <i class="material-icons tempo">query_builder</i>                
+                    </a>
+                </div>
+                <div class="rect {% if page == 'cotacoes' %} rect-selected {% endif %}">
+                    <a href="{% url 'currencies_view' 'BRL' %}">
+                        <i class="material-icons cotacoes">monetization_on</i>
+                    </a>
+                </div>
+            </ul>
+            <ul class="bottom-sidebar">
+                <div class="rect {% if page == 'conta' %} rect-selected {% endif %}">
+                    <a href="{% url 'profile_view' %}">                
+                        <i class="material-icons conta">account_circle</i>
+                    </a>
+                </div>
+                <div class="rect {% if page == 'suporte' %} rect-selected {% endif %}">
+                    <a href="{% url 'about_view' %}">                                    
+                        <i class="material-icons suporte">help</i>
+                    </a>
+                </div>
+            </ul>
+        </nav>
+
+
+        <div id="main-frame">
+            <header id="header">
+                <div id="top-header">
+                    <h2 id="logo-text"> easy<span id="logo-tasks">tasks</span></h2>
+                    {% if request.user.is_authenticated %}
+                        <nav id="user-panel-loggedin">
+                            <div id="user-details">
+                                <h3>{{ request.user.first_name }}</h3>
+                                <h4>@{{ request.user.username }}</h4>
+                            </div>
+                            <div id="logout-icon">
+                                <a href="{% url 'logout' %}">
+                                    <i class="material-icons close">close</i>
+                                </a>
+                            </div>
+                            
+                        </nav>
+                    {% else %}
+                        <nav id="user-panel-loggedout">
+                            <a href="{% url 'login' %}"><button id="login-button">Entrar</button></a>
+                            <a href="{% url 'register' %}"><button id="signup-button">Cadastrar</button></a>
+                        </nav>
+                    {% endif %}
+                </div>
+            </header>
+
+            <main id="content">
+                {% block content %}
+                {% endblock %}
+            </main>
+
+        </div>
+
+        <div id="cookie-preferences-manager" class="none">
+            <form id="cookieManagerForm" name="cookieManagerForm" method="POST" action="{% url 'cookie_view' %}">
+                <div id="manager-header">
+                    <div id="manager-header-title">
+                        <h1>Configurações de Privacidade</h1>
+                    </div>
+                    <div id="manager-header-subtitle">
+                        <p>
+                            Baseado na LGPD, o fornecimento de dados do usuário deve acontecer de forma livre, informada e inequívoca.
+                        </p>
+                    </div>
+                </div>
+
+                <div id="manager-menu">
+                    <div class="manager-menu-option">
+                        <div id="cookie-options-header">
+                            <h1 class="cookie-option-title">Necessários</h1>
+                            <div class="toggle-button">
+                                <p id="essential-status" class="toggle-status">Ligado</p>
+                                <div class="toggle-switch">
+                                    <label for="cookie-essential" class="switch">
+                                      <input id="cookie-essential" type="checkbox" name="cookie-essential" checked disabled>
+                                      <span class="slider round"></span>
+                                    </label>                            
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cookie-options-description">
+                            <p class="cookie-option-main">
+                                Esses cookies são indispensáveis para o funcionamento correto do site e não podem ser desabilitados.
+                            </p>
+                            <p class="cookie-option-example">
+                                Fonte: www.easytasks.com.br
+                                <br />
+                                Exemplo: Possibilitar autenticação do usuário.
+                            </p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="manager-menu-option">
+                        <div id="cookie-options-header">
+                            <h1 class="cookie-option-title">Funcionais</h1>
+                            <div class="toggle-button">
+                                <p id="functional-status" class="toggle-status">{% if cookies.cookie.cookie_functional.status == 'ON' %} Ligado {% else %} Desligado {% endif %}</p>
+                                <div class="toggle-switch">
+                                    <label for="cookie-functional" class="switch">
+                                      <input id="cookie-functional" type="checkbox" name="cookie-functional" {% if cookies.cookie.cookie_functional.status == 'ON' %} checked {% endif %}>
+                                      <span class="slider round"></span>
+                                    </label>                            
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cookie-options-description">
+                            <p class="cookie-option-main">
+                                Esses cookies são utilizados para personalizar funcionalidades do site de forma a armazenar as preferências do usuário.
+                            </p>
+                            <p class="cookie-option-example">
+                                Fonte: www.easytasks.com.br
+                                <br />
+                                Exemplo: Reconhecer que o usário está logado.
+                            </p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="manager-menu-option">
+                        <div id="cookie-options-header">
+                            <h1 class="cookie-option-title">Marketing</h1>
+                            <div class="toggle-button">
+                                <p id="marketing-status" class="toggle-status">{% if cookies.cookie.cookie_marketing.status == 'ON' %} Ligado {% else %} Desligado {% endif %}</p>
+                                <div class="toggle-switch">
+                                    <label for="cookie-marketing" class="switch">
+                                      <input id="cookie-marketing" type="checkbox" name="cookie-marketing" {% if cookies.cookie.cookie_marketing.status == 'ON' %} checked {% endif %}>
+                                      <span class="slider round"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cookie-options-description">
+                            <p class="cookie-option-main">
+                                Esses cookies oferecem a possibilidade de personalização dos anúncios de terceiros mostrados em todo site.
+                            </p>
+                            <p class="cookie-option-example">
+                                Fonte: Google Adsense
+                                <br />
+                                Exemplo: Mostrar anúncios com base no histórico de navegação do usuário.
+                            </p>
+                        </div>
+                    </div>       
+                </div>
+
+                <div id="manager-hyperlinks">
+                    <p>
+                        <a href="{% url 'privacy_view' %}">
+                            Política de Privacidade
+                        </a>
+                        -
+                        <a href="{% url 'terms_view' %}">
+                            Termos de Uso
+                        </a>
+                    </p>
+                </div>
+
+                <div id="manager-buttons">
+                    <button type="submit" id="save-cookies-button">Salvar Preferências</button>
+                    <button type="submit" id="accept-all-button">Aceitar Todos</button>
+                </div>
+                {% csrf_token %}
+            </form>
+        </div>
+
+        <div id="cookies-alert" class="{% if cookies.cookie.updated_at != 'None' %} none {% endif %}">
+            <div id="cookies-alert-text">
+                <p>
+                    Usamos cookies para armazenar informações sobre como você usa o nosso site e as páginas que visita, 
+                    em prol de uma melhor experiência do usuário. 
+                    Para entender os tipos de cookies que utilizamos e personalizá-los, 
+                    clique em ‘Definir Preferências’. Ao clicar em ‘Aceitar Cookies’, 
+                    você consente com a utilização de todos os cookies.
+                </p>
+            </div>
+            <div id="cookies-alert-buttons">
+                <button type="submit" id="accept-cookies-button">Aceitar Cookies</button>
+                <button type="submit" id="define-button">Definir Preferências</button>
+            </div>
+        </div>
+    
+    </div>
+
+    
+    {% block script %}
+    
+        <script>
+            
+            // Get Cookie
+            function getCookie(name) {
+                let cookieValue = null;
+                if (document.cookie && document.cookie !== '') {
+                    const cookies = document.cookie.split(';');
+                    for (let i = 0; i < cookies.length; i++) {
+                        const cookie = cookies[i].trim();
+                        // Does this cookie string begin with the name we want?
+                        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }
+    
+            const csrftoken = getCookie('csrftoken');
+            {% if request.user.is_authenticated %}
+                window.isUserLogged = true;
+            {% else %}
+                window.isUserLogged = false;
+            {% endif %}
+
+            {% block firstScript %}
+            {% endblock %}
+
+            document.addEventListener('DOMContentLoaded', (event) => {
+                {% block domready %}
+                {% endblock %}
+            });
+
+        </script>
+   
+    {% endblock %}
+
+    {% block coresScript%}
+    {% endblock %}
+
+    {% block dashboardScript%}
+    {% endblock %}
+
+
+    <script>
+        // Elements
+        const cookieManager = document.getElementById('cookie-preferences-manager');
+        const essentialStatus = document.getElementById('essential-status');
+        const functionalStatus = document.getElementById('functional-status');
+        const marketingStatus = document.getElementById('marketing-status');
+        const functionalCheckbox = document.getElementById('cookie-functional');
+        const marketingCheckbox = document.getElementById('cookie-marketing');
+        const cookiesForm = document.getElementById('cookieManagerForm');
+
+        const saveCookiesButton = document.getElementById('save-cookies-button');
+        const acceptAllButton = document.getElementById('accept-all-button');
+
+        const cookiesAlert = document.getElementById('cookies-alert');
+        const definePreferencesButton = document.getElementById('define-button');
+        const acceptCookiesButton = document.getElementById('accept-cookies-button');
+
+
+        // Functions
+        function saveCookiesPreferences() {
+            var cookiesPreferencesForm = new FormData(cookiesForm);
+            var myInit = {
+                body: cookiesPreferencesForm,
+                method: 'POST',
+                mode: 'same-origin',
+            };
+            const request = new Request("{% url 'cookie_view' %}", myInit);
+            fetch(request).then(function(response) {
+                if (response.status === 200) {
+                    return response.json();                    
+                } else {
+                    throw new Error('Something went wrong on api server!');
+                }
+            }).then(function(data) {
+            });
+        }
+
+
+        // Listeners
+        definePreferencesButton.addEventListener('click', function(event) {
+            cookiesAlert.classList.add('none');
+            cookieManager.classList.remove('none');
+        });
+
+        functionalCheckbox.addEventListener('change', function(event) {
+            if (functionalCheckbox.checked === true) {
+                functionalStatus.innerText = 'Ligado';
+            } else {
+                functionalStatus.innerText = 'Desligado';
+            }
+        });
+
+        marketingCheckbox.addEventListener('change', function(event) {
+            if (marketingCheckbox.checked === true) {
+                marketingStatus.innerText = 'Ligado';
+            } else {
+                marketingStatus.innerText = 'Desligado';
+            }
+        });
+
+        saveCookiesButton.addEventListener('click', function(event) {
+            event.preventDefault();
+            saveCookiesPreferences();
+            cookieManager.classList.add('none');
+        });
+
+        acceptAllButton.addEventListener('click', function(event) {
+            event.preventDefault();
+            functionalCheckbox.checked = true;
+            functionalStatus.innerText = 'Ligado';
+            marketingCheckbox.checked = true;
+            marketingStatus.innerText = 'Ligado';
+            cookieManager.classList.add('none');
+            saveCookiesPreferences();
+        });
+
+        acceptCookiesButton.addEventListener('click', function(event) {
+            event.preventDefault();
+            functionalCheckbox.checked = true;
+            functionalStatus.innerText = 'Ligado';
+            marketingCheckbox.checked = true;
+            marketingStatus.innerText = 'Ligado';
+            cookiesAlert.classList.add('none');
+            saveCookiesPreferences();
+        });
+
+
+
+
+    </script>
+
+</body>
+
+</html>
+

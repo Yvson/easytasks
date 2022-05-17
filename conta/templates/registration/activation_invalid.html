@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %} Easytasks - Ativação {% endblock %}
+
+{% block content %}
+<div class="activation-invalid-page">
+
+    <h1 id="page-title"> Ativação. </h1>
+
+    <hr id="horizontal-line">
+
+    <h3 id="page-subtitle"> Ativação Inválida. </h3>
+
+    <div id="main-activation-invalid-grid">
+    
+        <div id="activation-invalid-message">
+            <br />
+            <h3>
+                Não foi possível concluir a ativação da sua conta, 
+                pois o <strong>código</strong> fornecido é <strong>inválido</strong>.
+            </h3>
+        </div>
+
+        <div id="activation-invalid-adsense">
+            {% include "adsense_base.html" with personalizedAds=cookies.cookie.cookie_marketing.status %}
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

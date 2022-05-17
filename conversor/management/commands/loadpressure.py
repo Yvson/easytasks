@@ -1,0 +1,118 @@
+from django.core.management.base import BaseCommand
+from conversor.models import Pressure
+
+class Command(BaseCommand):
+
+    def add_arguments(self, parser):
+        parser.add_argument('--path', type=str)
+    
+    def handle(self, *args, **kwargs):
+        file = open(kwargs['path'], 'r')
+        pressure = []
+        for pressure_object in file:
+            pressure.append(pressure_object)
+
+        for pressure_object in pressure:
+            pressure_filter = pressure_object.rstrip().split(',')
+            pressure_item = Pressure(
+                    unit = pressure_filter[0],
+                    atmosfera_padrao = pressure_filter[1],
+                    atmosfera_tecnico = pressure_filter[2],
+                    attobar = pressure_filter[3],
+                    attopascal = pressure_filter[4],
+                    bar = pressure_filter[5],
+                    barad = pressure_filter[6],
+                    barye = pressure_filter[7],
+                    centibar = pressure_filter[8],
+                    centihg = pressure_filter[9],
+                    centimetro_de_agua_4_C = pressure_filter[10],
+                    centimetro_de_mercurio_0_C = pressure_filter[11],
+                    centipascal = pressure_filter[12],
+                    centitorr = pressure_filter[13],
+                    coluna_de_agua_centimetro = pressure_filter[14],
+                    coluna_de_agua_milimetro = pressure_filter[15],
+                    coluna_de_agua_polegada = pressure_filter[16],
+                    decabar = pressure_filter[17],
+                    decapascal = pressure_filter[18],
+                    decibar = pressure_filter[19],
+                    decipascal = pressure_filter[20],
+                    decitorr = pressure_filter[21],
+                    dina_centimetro_ao_quadrado = pressure_filter[22],
+                    exabar = pressure_filter[23],
+                    exapascal = pressure_filter[24],
+                    femtobar = pressure_filter[25],
+                    femtopascal = pressure_filter[26],
+                    gigabar = pressure_filter[27],
+                    gigapascal = pressure_filter[28],
+                    grama_forca_centimetro_ao_quadrado = pressure_filter[29],
+                    hectobar = pressure_filter[30],
+                    hectopascal = pressure_filter[31],
+                    kip_pe_ao_quadrado = pressure_filter[32],
+                    kip_polegada_ao_quadrado = pressure_filter[33],
+                    libra_pe_ao_quadrado = pressure_filter[34],
+                    libra_polegada_ao_quadrado = pressure_filter[35],
+                    megabar = pressure_filter[36],
+                    meganewton_metro_ao_quadrado = pressure_filter[37],
+                    megapascal = pressure_filter[38],
+                    metro_de_ar_0_C = pressure_filter[39],
+                    metro_de_ar_15_C = pressure_filter[40],
+                    microbar = pressure_filter[41],
+                    micrometro_de_agua_4_C = pressure_filter[42],
+                    micrometro_de_mercurio_0_C = pressure_filter[43],
+                    micropascal = pressure_filter[44],
+                    milibar = pressure_filter[45],
+                    milihg = pressure_filter[46],
+                    milimetro_de_agua_4_C = pressure_filter[47],
+                    milimetro_de_mercurio_0_C = pressure_filter[48],
+                    milipascal = pressure_filter[49],
+                    militorr = pressure_filter[50],
+                    nanobar = pressure_filter[51],
+                    nanopascal = pressure_filter[52],
+                    newton_metro_ao_quadrado = pressure_filter[53],
+                    newton_milimetro_ao_quadrado = pressure_filter[54],
+                    onca_polegada_ao_quadrado = pressure_filter[55],
+                    pascal = pressure_filter[56],
+                    pe_de_agua_4_C = pressure_filter[57],
+                    pe_de_ar_0_C = pressure_filter[58],
+                    pe_de_ar_15_C = pressure_filter[59],
+                    pe_de_mercurio_0_C = pressure_filter[60],
+                    petabar = pressure_filter[61],
+                    petapascal = pressure_filter[62],
+                    picobar = pressure_filter[63],
+                    picopascal = pressure_filter[64],
+                    pieze = pressure_filter[65],
+                    polegada_de_agua_4_C = pressure_filter[66],
+                    polegada_de_ar_0_C = pressure_filter[67],
+                    polegada_de_ar_15_C = pressure_filter[68],
+                    polegada_de_mercurio_0_C = pressure_filter[69],
+                    poundal_pe_ao_quadrado = pressure_filter[70],
+                    quilobar = pressure_filter[71],
+                    quilograma_forca_centimetro_ao_quadrado = pressure_filter[72],
+                    quilograma_forca_metro_ao_quadrado = pressure_filter[73],
+                    quilograma_forca_milimetro_ao_quadrado = pressure_filter[74],
+                    quilonewton_metro_ao_quadrado = pressure_filter[75],
+                    quilopascal = pressure_filter[76],
+                    quilopond_centimetro_ao_quadrado = pressure_filter[77],
+                    quilopond_metro_ao_quadrado = pressure_filter[78],
+                    quilopond_milimetro_ao_quadrado = pressure_filter[79],
+                    sthene_metro_ao_quadrado = pressure_filter[80],
+                    terabar = pressure_filter[81],
+                    terapascal = pressure_filter[82],
+                    tonelada_curta_pe_ao_quadrado = pressure_filter[83],
+                    tonelada_curta_polegada_ao_quadrado = pressure_filter[84],
+                    tonelada_longa_pe_ao_quadrado = pressure_filter[85],
+                    tonelada_longa_polegada_ao_quadrado = pressure_filter[86],
+                    tonelada_metro_ao_quadrado = pressure_filter[87],
+                    torr = pressure_filter[88],
+                    yoctobar = pressure_filter[89],
+                    yoctopascal = pressure_filter[90],
+                    yottabar = pressure_filter[91],
+                    yottapascal = pressure_filter[92],
+                    zeptobar = pressure_filter[93],
+                    zeptopascal = pressure_filter[94],
+                    zettabar = pressure_filter[95],
+                    zettapascal = pressure_filter[96]
+                )
+            pressure_item.save()
+        self.stdout.write(self.style.SUCCESS('Pressure data loaded to database.'))
+

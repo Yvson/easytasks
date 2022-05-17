@@ -1,0 +1,67 @@
+{% load i18n %}
+
+{% load static %}
+
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">    
+    <style>
+      @import url(http://fonts.googleapis.com/css?family=Quicksand);
+      @font-face {
+        font-family: 'Quicksand';
+        font-style: sans-serif;
+        src: url(https://fonts.gstatic.com/s/quicksand/v24/6xKtdSZaM9iE8KbpRA_hK1QN.woff2) format('woff2');
+      }
+    </style>
+  </head>
+  <body style="font-family: sans-serif; background: #f5f5f5;">
+    <table cellspacing="0" cellpadding="0" border="0" width="100%">
+     <tr>
+       <td width="100%" align="center">
+         <table cellspacing="0" cellpadding="0" border="0" width="480">
+           <tr>
+              <td style="background-color: #F7EFFF; padding: 18px; text-align: center;">
+                <!--<img alt="Easytasks" src="{{ protocol }}://{{ domain }}{% static 'images/logo/easytasks_logo.png' %}">-->
+                <a href="{{ protocol }}://{{ domain }}{% url 'dashboard:dashboard_view' %}" style="text-decoration: none;">
+                  <h2 id="logo-text" style="font-family: 'Quicksand', sans-serif; font-size: 42px; color: #9A00FF;">
+                    easy<span id="logo-tasks" style="color: #580091;">tasks</span>
+                  </h2>
+                </a>
+              </td>
+           </tr>
+           <tr>
+             <td style="background-color: white; padding:18px 18px; font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 21px; color: #444444" width="480" >
+                <h3 style="text-align: center;">Confirmação do Cadastro</h3>
+                <br>
+                Olá <strong>{{ user.get_username }}</strong>,
+                <br>
+                <br>
+                Por favor, <strong>clique no link</strong> abaixo para confirmar o seu cadastro:
+                <br>
+                <br>
+                <a href="{{ protocol }}://{{ domain }}{% url 'activate_view' uidb64=uid token=token %}">
+                  {{ protocol }}://{{ domain }}{% url 'activate_view' uidb64=uid token=token %}
+                </a>
+                <br>
+                <br>
+                {% translate "Thanks for using our site!" %}
+                <br>
+                <br>
+                <strong>{% blocktranslate %}The {{ site_name }} team{% endblocktranslate %}</strong>
+             </td>
+           </tr>
+           <tr>
+             <td style="font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height: 18px; color: #999999; padding: 12px 18px">
+               <p>
+                  Você recebeu esse email por conta de um cadastro feito no site da Easytasks através no email {{ user.email }}. Se você não efetuou o cadastro em nosso site, entre em contato através do <a href="{{ protocol }}://{{ domain }}{% url 'contact_view' %}">link</a>.
+               </p>
+             </td>
+           </tr>
+         </table>
+       </td>
+     </tr>
+   </table>
+  </body>
+</html>

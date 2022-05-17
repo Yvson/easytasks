@@ -1,0 +1,104 @@
+{% extends "cotacoes_base.html" %}
+
+{% load static %}
+
+{% block title %} Easytasks - Moedas FIAT {% endblock %}
+
+{% block cotacoes_content %}
+<div id="currencies-grid">
+    <div id="currencies-sidebar">
+        <div id="currencies-reference" class="currencies-div-text">
+            <form id="currencies-reference-form" action="" method="POST">        
+                <label form="currencies-reference-form">Moeda de Referência:</label>
+                <div class="format-currencies-below-label">
+                    <select class="currencies-input-data-select"
+                        type="text"
+                        id="currencies-reference-input"
+                        name="currencies-reference-input"
+                        size="1"
+                        required
+                        >
+                        {% for option in options_currency %}
+                            <option 
+                                href="{% url 'currencies_view' option.0 %}" 
+                                value={{option.0}}
+                                {% if option.0 == current_currency %} selected {% endif %}
+                                >
+                                {{option.0}} ({{option.1}})
+                            </option >
+                        {% endfor %}
+                    </select>
+                </div>
+                {% csrf_token %}
+            </form>
+        </div>
+
+        <div id="currencies-update" class="currencies-div-text">
+            <label form="currencies-update-label">Última Atualização:</label>
+            <div class="format-currencies-below-label">
+                <p id="currencies-update-date">{{date_currency|date:"d/M/Y"}} as 
+                    <span id="currencies-update-time">{{date_currency|date:"H:i"}} (UTC{{date_currency|date:"O"}})</span>
+                </p>
+            </div>
+        </div>
+
+
+        <div id="currencies-source" class="currencies-div-text">
+            <label form="currencies-source-label">Fonte:</label>
+            <div class="format-currencies-below-label">
+                <p id="currencies-source-title">{{source_currency}}</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="currencies-data">
+        <div id="currencies-grid-table">
+            <table id="currencies-time-table">
+                <thead>
+                    <tr>
+                        <th id="region-title-currencies-table">Páis/Região</th>
+                        <th id="currency-title-currencies-table">Moeda</th>
+                        <th id="symbol-title-currencies-table">Símbolo</th>
+                        <th id="price-title-currencies-table">Valor ({{current_currency}})</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for currency in currency_set %}
+                        <tr class="currencies-table-row-data">
+                            <td class="region-data-currencies-table">{{currency.from_country_region}}</td>
+                            <td class="currency-data-currencies-table">{{currency.name}}</td>
+                            <td class="symbol-data-currencies-table">{{currency.from_currency_code}}</td>
+                            <td class="price-data-currencies-table">{{currency.value}}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="currencies-adsense">
+        {% include "adsense_base.html" with personalizedAds=cookies.cookie.cookie_marketing.status %}
+    </div>
+
+</div>
+{% endblock %}
+
+<script>
+{% block firstScript %}
+    // Elements
+    const selectElement = document.getElementById('currencies-reference-input');
+
+    // Listener
+    selectElement.addEventListener('change', function(event) {
+        const url = selectElement.querySelectorAll('option')[selectElement.selectedIndex].attributes.href.value
+        window.location.assign(url);
+    });
+
+    // Reload page each 30 seconds
+    const interval = setTimeout(() => {
+        window.location.reload(true);
+    }, 30000);
+
+{% endblock %}
+</script>

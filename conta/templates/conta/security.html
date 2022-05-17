@@ -1,0 +1,36 @@
+{% extends "conta_base.html" %}
+
+{% load static %}
+
+{% block title %} Easytasks - Segurança {% endblock %}
+
+{% block conta_content %}
+<div id="security-grid">
+    <div id="security-menu">
+        <form id="security-data-form" method="POST">
+            {% csrf_token %}
+            {% for field in form.visible_fields %}
+                <div class="error-tag"> {{ field.errors }}</div>
+                <label>{{ field.label_tag }}</label>
+                <br/>
+                {{ field }}
+                <br/>
+                {% if field.help_text %}
+                    {{ field.help_text|safe }}
+                    <br/>
+                {% endif %}
+            {% endfor %}
+
+            <button id="security-save-button" type="submit" value="Save">Salvar</button>
+        </form>
+    </div>
+    <div id="security-empty">
+
+    </div>
+    <div id="security-adsense">
+        {% include "adsense_base.html" with personalizedAds=cookies.cookie.cookie_marketing.status %}
+    </div>
+
+</div>
+    
+{% endblock %}

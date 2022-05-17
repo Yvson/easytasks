@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %} Easytasks - Dashboard {% endblock %}
+
+{% block content %}
+<div id="dashboard-page" class="dashboard-page">
+
+    <h1 id="page-title"> Dashboard </h1>
+
+    <hr id="horizontal-line">
+
+    <h3 id="page-subtitle"> Painel Geral </h3>
+
+    <div id="menu">
+        <a href="{% url 'conversor_view' 'massa' %}">
+            <div id="conversor">
+                    <div class="icon-and-title">
+                        <i class="material-icons icon-dashboard" id="icon-conversor-color">autorenew</i>
+                        <h2 class="icon-title"> Conversor de Unidades </h2>
+                    </div>
+            </div>
+        </a>
+        
+        <a href="{% url 'numbers_view' %}">
+            <div id="gerador">
+                    <div class="icon-and-title">
+                        <i class="material-icons icon-dashboard" id="icon-gerador-color">calculate</i>
+                        <h2 class="icon-title"> Gerador </h2>
+                    </div>
+            </div>
+        </a>        
+    
+        <a href="{% url 'texto_view' 'letras_maiusculas' %}">
+            <div id="texto">
+                    <div class="icon-and-title">
+                        <i class="material-icons icon-dashboard" id="icon-texto-color">text_format</i>
+                        <h2 class="icon-title"> Texto </h2>
+                    </div>
+            </div>
+        </a>
+
+        <a href="{% url 'cores_view' 'analogo' %}">
+            <div id="cores">
+                    <div class="icon-and-title">
+                        <i class="material-icons icon-dashboard" id="icon-cores-color">palette</i>
+                        <h2 class="icon-title"> Cores </h2>
+                    </div>
+            </div>
+        </a>
+    
+        <div id="tempo-app">
+        </div>
+        
+        <div id="cotacoes">
+            <div id="cotacoes-top">
+                <div id="cotacoes-top-left">
+                    <i class="material-icons icon-dashboard-top" id="icon-cotacoes-color">monetization_on</i>
+                    <h3 id="cotacoes-icon-title">Cotações</h3>
+                </div>
+                <div id="cotacoes-top-right">
+                    <p id="cotacoes-top-right-update">
+                        Atualizado em 
+                        <span class="cotacoes-top-date">{{last_update|date:"d/M/Y"}}</span> as 
+                        <span class="cotacoes-top-date">{{last_update|date:"H:i"}} (UTC{{last_update|date:"O"}})</span>
+                    </p>
+                </div>
+            </div>
+
+            <div id="cotacoes-table">
+                <table id="cotacoes-table-tag">
+                    <thead>
+                        <tr>
+                            <th id="cotacoes-table-ID">País/Região</th>
+                            <th id="cotacoes-table-Moeda">Moeda</th>
+                            <th id="cotacoes-table-Simbolo">Símbolo</th>
+                            <th id="cotacoes-table-Valor">Valor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for currency in currency_list %}
+                            <tr>
+                                <td class="cotacoes-table-avatar">{{currency.from_country_region}}</td>
+                                <td>{{currency.name}}</td>
+                                <td>{{currency.from_currency_code}}</td>
+                                <td class="cotacoes-table-price">R$ {{currency.value|floatformat:"4g"}}</td>
+                            </tr>
+                        {% endfor %}
+                        {% for cryptocurrency in cryptocurrency_list %}
+                            <tr>
+                                <td class="cotacoes-table-avatar">-</td>
+                                <td>{{cryptocurrency.name}}</td>
+                                <td>{{cryptocurrency.symbol|upper}}</td>
+                                <td class="cotacoes-table-price">R$ {{cryptocurrency.value|floatformat:"2g"}}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            
+            <div id="cotacoes-bottom">
+                <p id="cotacoes-bottom-sources">Fontes: {{currency_source}} e {{cryptocurrency_source}}</p>
+                <a href="{% url 'currencies_view' 'BRL' %}">
+                    <h2 id="cotacoes-bottom-more">Ver todas</h2>
+                </a>
+            </div>
+
+        </div>
+
+        <div id="adsense">
+            <h2>Google Adsense</h2>
+            {% block adsense %} 
+                {{ block.super }}
+            {% endblock %}
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock %}
+
+
+{% block dashboardScript %}
+    <script src="{% static 'js/dashboard.js' %}"></script>
+{% endblock %}
+
+<script>
+{% block firstScript %}
+    window.react_mount = document.getElementById('tempo-app');
+
+{% endblock %}
+</script>

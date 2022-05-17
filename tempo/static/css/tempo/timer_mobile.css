@@ -1,0 +1,274 @@
+:root {
+    --purple-primary: #580091;
+    --purple-secondary: #9A00FF;
+    --purple-tertiary: #F7EFFF;
+    --purple-quaternary: #E6D3F9;
+    --purple-light: #FBF8FE;
+    --gray-primary: #2D3940;
+    --gray-secondary: #4A565D;
+    --gray-tertiary: #47494A;
+    --gray-quaternary: #7D919C;
+    --gray-light: #F2F3F4;
+    --dark-gray: #18262D;
+    --blue-primary: #0089B4;
+    --blue-secondary: #E4F5FB;
+    --blue-tertiary: #E4ECF1;
+    --orange-dark: #D96500;
+    --orange-light: #FFE5CE;
+    --pink-light: #FFDCF0;
+    --green-dark: #00A175;
+    --green-light: #D4FBF0;
+    --red-primary: #9e0f1c;
+    --red-secondary: #e60015;
+    --red-tertiary: #ff0015;
+    --white: #ffffff;
+
+}
+
+@media only screen and (max-width: 1200px) {
+
+    #tempo-grid {
+        height: inherit;
+        width: inherit;
+    }
+    
+    #tempo-app {
+        height: inherit;
+        width: inherit;
+    }
+    
+    #tempo-timer-grid-app {
+        max-width: 98.25%;
+        max-height: 750px;
+        height: 97.25%;
+        padding-top: 10px;
+        padding-bottom: 6px;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(2, 300px);
+        gap: 10px;
+        grid-template-areas:
+            "time"
+            "table"
+        ;
+    }
+    
+    #tempo-timer-grid-table {
+    
+        grid-area: table;
+        background-color: var(--purple-tertiary);
+        border-radius: 16px;
+        overflow: auto;
+    }
+    
+    #tempo-timer-table {
+        width: 100%;
+        text-align: center;
+        border-collapse: separate;
+        border-spacing: 0;
+    }
+    
+    #tempo-timer-grid-table th {
+        border-bottom: 2px solid var(--purple-quaternary);
+        font-size: 14px;
+        color: var(--gray-primary);
+    
+        background-color: var(--purple-tertiary);
+        position: sticky;
+        z-index: 10;
+        top: 0px;
+        padding: 8px;
+    }
+    
+    .num-data-table, .mark-data-table, .duration-data-table {
+        padding: 15px 0px 15px 0px;
+        text-align: center;
+        vertical-align: center;
+        font-size: 14px;
+    
+    }
+    
+    .timer-table-row-data {
+        cursor: pointer;
+        margin: 5px 0px 5px 0px;
+        padding: 5px 0px 5px 0px;
+    }
+    
+    .timer-table-row-data:hover {
+        background-color: var(--purple-quaternary);
+    }
+    
+    
+    #tempo-grid-timer {
+        grid-area: time;
+        border-radius: 16px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    
+    }
+    
+    #tempo-timer-display {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    #tempo-timer-display-time {
+        font-family: 'Quicksand', sans-serif;
+        font-size: 80px;
+        font-weight: 800;
+        color: var(--gray-primary);
+        background-color: transparent;
+        outline: none;
+        border: none;
+        text-align: center;
+    }
+    
+    #timer-buttons {
+        padding: 20px 0px 0px 0px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 15px;
+    }
+    
+    .timer-button {
+        font-family: 'Quicksand', sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        border: none;
+        border-radius: 12px;
+        width: 90px;
+        height: 30px;
+        cursor: pointer;
+    }
+    
+    #timer-start-button {
+        background-color: var(--purple-primary);
+        color: var(--white);
+        outline: none;
+    }
+    
+    
+    #timer-start-button:hover {
+        background-color: var(--purple-secondary);
+        color: var(--white);
+    
+    }
+    
+    #timer-mark-button {
+        background-color: var(--purple-quaternary);
+        color: var(--purple-primary);
+        outline: none;
+    }
+    
+    #timer-mark-button:hover {
+        background-color: var(--purple-quaternary);
+        color: var(--purple-secondary);
+    }
+    
+    #timer-restart-button {
+        background-color: var(--red-secondary);
+        color: var(--white);
+        outline: none;
+    }
+    
+    
+    #timer-restart-button:hover {
+        background-color: var(--red-tertiary);
+        color: var(--white);
+    }
+    
+    #tempo-timer-display-region {
+        text-align: center;
+        padding: 20px;
+        font: 'Roboto', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        color: var(--gray-primary);
+    }
+    
+    #tempo-timer-display-date {
+        text-align: center;
+        padding: 20px;
+        font: 'Roboto', sans-serif;
+        font-size: 14px;
+        font-weight: 300;
+        color: var(--gray-primary);
+    }
+    
+    #tempo-timer-bottom {
+        align-self: flex-end;
+        cursor: pointer;
+    }
+    
+    .icon-dashboard-bottom {
+        color: var(--gray-secondary);
+    }
+    
+    #tempo-timer-bottom:hover > .icon-dashboard-bottom {
+        color: var(--purple-secondary);
+    }
+    
+    #tempo-timer-grid-adsense {
+        background: transparent;
+        border-radius: 16px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 10px 10px 10px 10px;
+    }
+    
+    #tempo-timer-adsense-title {
+        text-align: center;
+        color: var(--white);
+    }
+    
+    /* INPUT TIMER ---- START */
+    #timer-display {
+        cursor: pointer;
+        /* background-color: greenyellow; */
+        height: fit-content;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    #timer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+    }
+      
+    #input-tempo-timer-display-time {
+        position: relative;
+        top: 0px;
+        left: 0px;
+        height: 0px;
+        width: 0px;
+        opacity: 0;
+        z-index: -2;
+    }
+    
+    .text {
+        color: var(--gray-primary);
+        font-family: "Quicksand", 'sans-serif';
+        font-size: 50px;
+        font-weight: 700;
+    }
+    
+    .text-cursor-right {
+        border-right: 1px solid black;
+    }
+    
+    .text-cursor-left {
+        border-left: 1px solid black;
+    }
+    /* INPUT TIMER ---- END */
+      
+      
+}

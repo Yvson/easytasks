@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %} Easytasks - Suporte {% endblock %}
+
+{% block content %}
+<div class="suporte-page">
+    <h1 id="page-title"> Suporte </h1>
+
+    <hr id="horizontal-line">
+
+    <div class="suporte-page-menu">
+        <ul class="suporte-menu-list">
+            <a href="{% url 'about_view' %}">
+                <li class="suporte-menu-option {% if section == 'sobre' %} menu-option-selected {% endif %}" id="about-option">
+                    Sobre Easytasks
+                </li>
+            </a>
+            <a href="{% url 'terms_view' %}">
+                <li class="suporte-menu-option {% if section == 'termos' %} menu-option-selected {% endif %}" id="security-option">
+                    Termos de Uso
+                </li>
+            </a>
+            <a href="{% url 'privacy_view' %}">
+                <li class="suporte-menu-option {% if section == 'privacidade' %} menu-option-selected {% endif %}" id="privacy-option">
+                    Privacidade
+                </li>
+            </a>
+            <a href="{% url 'contact_view' %}">
+                <li class="suporte-menu-option {% if section == 'contato' %} menu-option-selected {% endif %}" id="contact-option">
+                    Fale Conosco
+                </li>
+            </a>                                    
+        </ul>
+    </div>
+
+    <div id="suporte-page-content">
+        {% block suporte_content %}
+        {% endblock %}
+    </div>
+
+</div>
+ 
+
+{% endblock %}

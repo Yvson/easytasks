@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %} Easytasks - Cadastro {% endblock %}
+
+{% block content %}
+<div class="register-done-page">
+
+    <h1 id="page-title"> Cadastro. </h1>
+
+    <hr id="horizontal-line">
+
+    <h3 id="page-subtitle"> Cadastro Finalizado. </h3>
+
+    <div id="main-register-done-grid">
+    
+        <div id="register-done-message">
+            <br />
+            <h3>
+                <strong>{{ new_user.first_name }}</strong>, 
+                sua conta foi criado com sucesso. Para acessá-la, 
+                <a style="text-decoration: none;" href="{% url 'login' %}">
+                <strong>Clique aqui</strong></a>. 
+            </h3>
+        </div>
+
+        <div id="register-done-adsense">
+            {% include "adsense_base.html" with personalizedAds=cookies.cookie.cookie_marketing.status %}
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

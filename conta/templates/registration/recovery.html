@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %} Easytasks - Recuperar Senha {% endblock %}
+
+{% block content %}
+<div class="recovery-page">
+
+    <h1 id="page-title"> Recuperação de Senha. </h1>
+
+    <hr id="horizontal-line">
+
+    <h3 id="page-subtitle"> Para recuperar a sua senha, 
+        digite o e-mail informado no cadastro no campo abaixo<br>
+        e uma nova senha será enviada para o e-mail informado. 
+    </h3>
+
+    <div id="main-recovery-form">
+        <form id="recovery-form" action="" method="post">
+            {% csrf_token %}
+            <h4> E-mail </h4>
+            {{ form.email }}
+            <br>
+            <button id="form-recovery-button" type="submit">Recuperar Senha</button>
+        </form>
+    </div>
+
+</div>
+
+{% endblock %}

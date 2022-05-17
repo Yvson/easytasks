@@ -1,0 +1,25 @@
+{% extends "suporte_base.html" %}
+
+{% load static %}
+
+{% block title %} Easytasks - Sobre {% endblock %}
+
+{% block suporte_content %}
+<div id="sobre-grid" class="sobre-page">
+
+    <div id="sobre-texto">
+        <p>
+            Easytasks é um portal desenhado para ajudar na execução de tarefas cotidianas simples de forma fácil e rápida.
+            Todos os conteúdos e dados deste site são apenas para fins informativos, não devem ser considerados completos, atualizados, e não se destinam a ser utilizado no lugar de uma consulta jurídica, médica, financeira, ou de qualquer outro profissional. Os conteúdos são fornecidos sem qualquer tipo de garantia.
+            Todo e qualquer risco da utilização dos conteúdos é assumido pelo próprio usuário. 
+        </p>
+    </div>
+
+    <div id="sobre-adsense">
+        {% include "adsense_base.html" with personalizedAds=cookies.cookie.cookie_marketing.status %}
+    </div>
+
+</div>
+
+
+{% endblock %}

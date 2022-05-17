@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %} Easytasks - Cadastro {% endblock %}
+
+{% block content %}
+<div class="register-page">
+
+    <h1 id="page-title"> Cadastro. </h1>
+
+    <hr id="horizontal-line">
+
+    <h3 id="page-subtitle"> Preencha os campos abaixo com as suas informações. <strong>Todos os campos são obrigatórios.</strong> </h3>
+
+    <div id="main-register-grid">
+        <div id="main-register-form"> 
+            <form id="register-form" action="" method="post">
+                <div id="register-form-columns">
+                    <div id="register-form-column-1">
+                        {% for field in user_form %}
+                            <label>{{ field.label_tag }}</label>
+                            <br/>
+                            {{ field }}
+                            <br/>
+                            {% if field.help_text %}
+                                <p>{{ field.help_text|safe }}</p>
+                            {% endif %}
+                            <br/>
+                            <div class="error-tag"> {{ field.errors }}</div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div id="checkbox-register-form">
+                    <label class="checkbox-container text-below-register-form">
+                        Eu aceito todos os 
+                        <a href="{% url 'terms_view' %}"><span class="bold underline">
+                            Termos de Uso
+                        </span></a> da 
+                        <span class="bold">
+                            easytasks
+                        </span>.
+                        <input type="checkbox" id="remember-pwd" required>
+                        <span class="checkbox-checkmark"></span>
+                    </label>
+                </div>
+                {% csrf_token %}
+                <button id="form-register-button">Criar Conta</button>
+            </form>
+            <p id="login-question"> Já possui cadastro? <a style='text-decoration: none;' href="{% url 'login' %}"><span id="login-call">Faça o login</span></a>
+
+        </div>
+        <div id="register-adsense">
+            {% include "adsense_base.html" with personalizedAds=cookies.cookie.cookie_marketing.status %}
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

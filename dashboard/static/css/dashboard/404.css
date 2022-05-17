@@ -1,0 +1,120 @@
+:root {
+    --purple-primary: #580091;
+    --purple-secondary: #9A00FF;
+    --purple-tertiary: #F7EFFF;
+    --purple-quaternary: #E6D3F9;
+    --purple-light: #FBF8FE;
+    --gray-primary: #2D3940;
+    --gray-secondary: #4A565D;
+    --gray-tertiary: #47494A;
+    --gray-quaternary: #7D919C;
+    --gray-light: #F2F3F4;
+    --dark-gray: #18262D;
+    --blue-primary: #0089B4;
+    --blue-secondary: #E4F5FB;
+    --blue-tertiary: #E4ECF1;
+    --orange-dark: #D96500;
+    --orange-light: #FFE5CE;
+    --pink-light: #FFDCF0;
+    --green-dark: #00A175;
+    --green-light: #D4FBF0;
+    --white: #ffffff;
+
+}
+
+.not-found-page {
+    flex-grow: 1;
+}
+
+.not-found-page h1 {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 40px;
+    color: var(--purple-secondary);
+}
+
+.not-found-page h2 {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 30px;
+    color: var(--gray-secondary);
+}
+
+.not-found-page h3 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--gray-tertiary);
+}
+
+.not-found-page #page-title {
+    color: var(--purple-primary);
+    padding-bottom: 6px;
+}
+
+.not-found-page #horizontal-line {
+    max-width: 98%;
+    border: 1px solid var(--gray-secondary);
+    opacity: 0.25;
+}
+
+.not-found-page #page-subtitle {
+    font-style: italic;
+    padding-top: 5px;
+}
+
+#not-found-content {
+    /* background-color: green; */
+    max-width: 98.25%;
+    height: 88%;
+    display: grid;
+    padding-top: 10px;
+    padding-bottom: 8px;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 20px;
+    grid-template-areas:
+        "message message message message message message adsense"
+        "message message message message message message adsense"
+        "message message message message message message adsense";
+}
+
+#message {
+    background: var(--white);
+    grid-area: message;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#message #error-404 {
+    font-size: 5rem;
+}
+
+#message a,
+#error-404-subtitle {
+    font-size: 2rem;
+    font-style: italic;
+    text-decoration: none;
+}
+
+#message #error-404-subtitle:hover {
+    text-decoration: underline;
+}
+
+#adsense {
+    background-color: transparent;
+    grid-area: adsense;
+    border-radius: 16px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#adsense h2 {
+    font-size: 40px;
+    color: var(--purple-primary);
+
+}

@@ -1,0 +1,267 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %} Easytasks - Texto {% endblock %}
+
+{% block content %}
+<div class="texto-page">
+    <h1 id="page-title"> Texto </h1>
+
+    <hr id="horizontal-line">
+
+
+    <div class="texto-page-menu">
+        <ul class="texto-menu-list">
+            <a href="{% url 'texto_view' 'letras_maiusculas' %}">
+                <li class="texto-menu-option {% if section == 'letras_maiusculas' %} menu-option-selected {% endif %}" id="uppercase-option">
+                    Letras Maiúsculas
+                </li>
+            </a>
+            <a href="{% url 'texto_view' 'letras_minusculas' %}">
+                <li class="texto-menu-option {% if section == 'letras_minusculas' %} menu-option-selected {% endif %}" id="lowercase-option">
+                    Letras Minúsculas
+                </li>
+            </a>
+            <a href="{% url 'texto_view' 'primeira_letra_maiuscula' %}">
+                <li class="texto-menu-option {% if section == 'primeira_letra_maiuscula' %} menu-option-selected {% endif %}" id="uppercase-each-word-option">
+                    Primeira Letra Maiúscula
+                </li>
+            </a>
+            <a href="{% url 'texto_view' 'maiusculas_minusculas' %}">
+                <li class="texto-menu-option {% if section == 'maiusculas_minusculas' %} menu-option-selected {% endif %}" id="uppercase-each-other-letter-option">
+                    Maiúsculas/Minúsculas
+                </li>
+            </a>
+            <a href="{% url 'texto_view' 'binario' %}">
+                <li class="texto-menu-option {% if section == 'binario' %} menu-option-selected {% endif %}" id="binary-option">
+                    Binário
+                </li>
+            </a>
+            <a href="{% url 'texto_view' 'inverter' %}">
+                <li class="texto-menu-option {% if section == 'inverter' %} menu-option-selected {% endif %}" id="invert-option">
+                    Inverter
+                </li>
+            </a>
+        </ul>
+    </div>
+
+    <div id="texto-page-content">
+        <div id="texto-grid">
+            <div id="texto-area">
+                <div id="text-area-label">
+                    <h3 id="text-label"> Insira o texto no espaço abaixo:</h3>
+                </div>
+                <div id="texto-form">
+                    <textarea 
+                        id="input-textarea"
+                        class="input-data-form"
+                        name="text-area-content"
+                        placeholder="Insira o texto aqui..."
+                    ></textarea>
+
+                    <div id="text-area-bottom">
+                        <button id="convert-button">Converter</button>
+                        <div id="text-info">
+                            <p>Palavras: <span id="word-counter"></span></p>
+                            <p>Caracteres (com espaços): <span id="char-counter"></span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="texto-adsense">
+                {% include "adsense_base.html" with personalizedAds=cookies.cookie.cookie_marketing.status %}
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}
+
+<script>
+{% block firstScript %}
+
+    // Input Elements
+    const inputTextArea = document.getElementById('input-textarea');
+    const spanWordCounter = document.getElementById('word-counter');
+    const spanCharCounter = document.getElementById('char-counter');
+
+    // Buttons
+    const convertButton = document.getElementById('convert-button');
+
+    // Initial Values
+    let SECTION = '{{section}}';
+    let TEXT = inputTextArea.value;
+    let WORDCOUNTER = 0;
+    let CHARCOUNTER = 0;
+
+    // Auxiliary Functions
+    function onlyWordsFilter(item) {
+        return /(\w+|\W+)/gi.test(item);
+    }
+
+   function onlyCharsFilter(item) {
+        return /(\w|\W)/gi.test(item);
+    }
+ 
+    function identifyLetterToCapitalize(letter, index) {
+        const regexTest = /(\\n)+/.test(item);
+        
+
+        return 
+    }
+
+    function countWords(text) {
+        let textFiltering = String(text).replaceAll('\n', ' ').split(' ');
+        let textFiltered;
+        textFiltering = textFiltering.filter((item) => onlyWordsFilter(item));
+        textFiltered = textFiltering.length;
+        return textFiltered;
+    }
+
+    function countChars(text) {
+        let textFiltering = String(text).replaceAll('\n', ' ');
+        let charsNumber;
+        charsNumber = textFiltering.length;
+        return charsNumber;
+    }
+
+    function includesAny(character) {
+        let specialChars = [' ', '\n', '(', ')', '[', ']', '{', '}', '|', '.', '?', '+', '*', '^', '$', '\\', '/', '...', '"'];
+        return specialChars.includes(character);
+    }
+
+
+    function uppercaseFirstLetter(word) {
+        let wordChange = word.split('')
+        let finalWord = [];
+        wordChange.forEach((item, index) => index === 0 ? finalWord.push(item.toUpperCase()) : finalWord.push(item));
+        return finalWord.join('');
+    }
+
+    function convertAllToUppercase(text) {
+        let textArray = String(text).toUpperCase();
+        inputTextArea.value = textArray;
+    }
+
+    function convertAllToLowercase(text) {
+        let textArray = String(text).toLowerCase();
+        inputTextArea.value = textArray;
+    }
+
+    function convertFirstLetterToUppercase(text) {
+        let initialText = String(text).toLowerCase();
+        let final = [];
+        for (let i=0; i<initialText.length; i++) {
+            if (i==0) {
+                final.push(initialText[i].toUpperCase());
+            } 
+            else if ([initialText[i-1]].some(includesAny)) {
+                final.push(initialText[i].toUpperCase());
+            } else {
+                final.push(initialText[i].toLowerCase());
+            }
+            
+        }
+        inputTextArea.value = final.join('');
+    }
+
+    function convertUppercaseLowercase(text) {
+        let initialText = String(text).toLowerCase();
+        let finalText = [];
+        let isLetter;
+        let toUpperCase = includesAny(initialText[0]) ?  false : true;
+
+        for (let letter in initialText) {
+            isLetter = includesAny(initialText[letter]) ? false : true;
+
+            if (isLetter && toUpperCase) {
+                finalText.push(initialText[letter].toUpperCase());
+                toUpperCase = false;
+            } else if (isLetter) {
+                finalText.push(initialText[letter].toLowerCase());
+                toUpperCase = true;
+            } else {
+                finalText.push(initialText[letter].toLowerCase());
+            }
+        }
+        inputTextArea.value = finalText.join('');
+    }
+
+    function convertStringToBinary(text) {
+        let initialText = String(text).replaceAll('\n', ' ');
+        let finalText = [];
+
+        for (let index in initialText) {
+            finalText.push(initialText[index].charCodeAt().toString(2));
+        }
+        inputTextArea.value = finalText.join(' ');
+        return finalText.join(' ');
+
+    }
+
+    function convertBinaryToString(text) {
+        let initialText = String(text).split(' ');
+        let finalText = [];
+
+        for (let index in initialText) {
+            finalText.push(String.fromCharCode(parseInt(initialText[index], 2)));
+        }
+        inputTextArea.value = finalText.join('');
+        return finalText.join('');
+
+    }
+
+    function convertReverseString(text) {
+        let initialText = String(text);
+        let finalText = [];
+
+        for (let index in initialText) {
+            finalText.push(initialText[(initialText.length-1) - index]);
+        }
+        inputTextArea.value = finalText.join('');
+        return finalText.join('');
+
+    }
+
+    // Listeners
+    inputTextArea.addEventListener("keyup", function() {
+        TEXT = inputTextArea.value;
+        WORDCOUNTER = spanWordCounter.innerText = countWords(inputTextArea.value);
+        CHARCOUNTER = spanCharCounter.innerText = countChars(inputTextArea.value);
+    });
+
+    convertButton.addEventListener("click", function() {
+        
+        switch (SECTION) {
+            case 'letras_maiusculas':
+                convertAllToUppercase(TEXT);
+                break;
+            case 'letras_minusculas':
+                convertAllToLowercase(TEXT);
+                break;
+            case 'primeira_letra_maiuscula':
+                convertFirstLetterToUppercase(TEXT);
+                break;
+            case 'maiusculas_minusculas':
+                convertUppercaseLowercase(TEXT);
+                break;
+            case 'binario':
+                convertStringToBinary(TEXT);
+                break;
+            case 'inverter':
+                convertReverseString(TEXT);
+                break;
+            
+        }
+
+        // Update TEXT variable
+        TEXT = inputTextArea.value;
+
+
+    });
+    
+
+{% endblock %}
+</script>

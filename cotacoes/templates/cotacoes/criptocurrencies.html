@@ -1,0 +1,111 @@
+{% extends "cotacoes_base.html" %}
+
+{% load static %}
+
+{% block title %} Easytasks - Criptomoedas {% endblock %}
+
+{% block cotacoes_content %}
+<div id="criptocurrencies-grid">
+    <div id="criptocurrencies-sidebar">
+        <div id="criptocurrencies-reference" class="criptocurrencies-div-text">
+            <form id="criptocurrencies-reference-form" action="" method="POST">        
+                <label form="criptocurrencies-reference-form">Moeda de Referência:</label>
+                <div class="format-criptocurrencies-below-label">
+                    <select class="criptocurrencies-input-data-select"
+                        type="text"
+                        id="criptocurrencies-reference-input"
+                        name="criptocurrencies-reference-input"
+                        size="1"
+                        required
+                        >
+                        {% for option in options_currency %}
+                            <option 
+                                href="{% url 'cryptocurrencies_view' option.0 %}" 
+                                value={{option.0}}
+                                {% if option.0 == current_currency %} selected {% endif %}
+                                >
+                                {{option.0}} ({{option.1}})
+                            </option >
+                        {% endfor %}
+                    </select>
+                </div>
+                {% csrf_token %}
+            </form>
+        </div>
+
+        <div id="criptocurrencies-update" class="criptocurrencies-div-text">
+            <label form="criptocurrencies-update-label">Última Atualização:</label>
+            <div class="format-criptocurrencies-below-label">
+                <p id="criptocurrencies-update-date">{{date_cryptocurrency|date:"d/M/Y"}} as 
+                    <span id="criptocurrencies-update-time">{{date_cryptocurrency|date:"H:i"}} (UTC{{date_cryptocurrency|date:"O"}})</span>
+                </p>
+            </div>
+        </div>
+
+        <div id="criptocurrencies-source" class="criptocurrencies-div-text">
+            <label form="criptocurrencies-source-label">Fonte:</label>
+            <div class="format-criptocurrencies-below-label">
+                <p id="criptocurrencies-source-title">{{source_cryptocurrency}}</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="criptocurrencies-data">
+        <div id="criptocurrencies-grid-table">
+            <table id="criptocurrencies-time-table">
+                <thead>
+                    <tr>
+                        <th id="criptocurrency-title-criptocurrencies-table">Criptomoeda</th>
+                        <th id="symbol-title-criptocurrencies-table">Símbolo</th>
+                        <th id="marketcap-title-criptocurrencies-table">Valor de Mercado ({{current_currency}})</th>
+                        <th id="circulating-supply-title-criptocurrencies-table">Moedas em Circulação</th>
+                        <th id="max-supply-title-criptocurrencies-table">Total de Moedas</th>
+                        <th id="price-title-criptocurrencies-table">Valor ({{current_currency}})</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for currency in currency_set %}
+                        <tr class="criptocurrencies-table-row-data">
+                            <td class="criptocurrency-data-criptocurrencies-table">{{currency.name}}</td>
+                            <td class="symbol-data-criptocurrencies-table">{{currency.symbol|upper}}</td>
+                            <td class="marketcap-data-criptocurrencies-table">{{currency.market_cap|floatformat:"g"}}</td>
+                            <td class="circulating-supply-data-criptocurrencies-table">{{currency.circulating_supply|floatformat:"g"}}</td>
+                            <td class="max-supply-data-criptocurrencies-table">
+                                {{currency.max_supply|floatformat:"g"|default:"-"}}
+                            </td>
+                            <td class="price-data-criptocurrencies-table">{{currency.value|floatformat:"2g"}}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+
+    <div id="criptocurrencies-adsense">
+        {% include "adsense_base.html" with personalizedAds=cookies.cookie.cookie_marketing.status %}
+    </div>
+
+</div>
+{% endblock %}
+
+<script>
+{% block firstScript %}
+    // Elements
+    const selectElement = document.getElementById('criptocurrencies-reference-input');
+
+    // Listener
+    selectElement.addEventListener('change', function(event) {
+        const url = selectElement.querySelectorAll('option')[selectElement.selectedIndex].attributes.href.value
+        window.location.assign(url);
+
+    });
+
+    // Reload page each 30 seconds
+    const interval = setTimeout(() => {
+        window.location.reload(true);
+    }, 30000);
+
+
+{% endblock %}
+</script>

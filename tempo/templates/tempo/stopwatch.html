@@ -1,0 +1,31 @@
+{% extends "tempo_base.html" %}
+
+{% load static %}
+
+{% block title %} Easytasks - Cronômetro {% endblock %}
+
+{% block timeapp %}
+    <div id="tempo-page-content">
+        <div id="tempo-grid">
+        </div>
+        <div id="tempo-stopwatch-grid-adsense">
+            {% include "adsense_base.html" with personalizedAds=cookies.cookie.cookie_marketing.status %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script id="components-info">
+        window.mountingInfo = {
+            appName: '{{section}}',
+            component: document.getElementById('tempo-grid'),
+        };
+        
+    </script>
+
+    <script src="{% static 'js/tempo.js' %}"></script>
+
+{% endblock %}
+
+
+

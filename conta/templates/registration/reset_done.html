@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %} Easytasks - Resetar Senha {% endblock %}
+
+{% block content %}
+<div class="reset-done-page">
+
+    <h1 id="page-title"> Resetar Senha. </h1>
+
+    <hr id="horizontal-line">
+
+    <h3 id="page-subtitle"> Senha alterada com sucesso. 
+        Você pode <a href="{% url 'login' %}">acessar</a> sua conta novamente. 
+    </h3>
+
+</div>
+
+{% endblock %}

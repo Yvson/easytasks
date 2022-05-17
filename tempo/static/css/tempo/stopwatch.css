@@ -1,0 +1,222 @@
+:root {
+    --purple-primary: #580091;
+    --purple-secondary: #9A00FF;
+    --purple-tertiary: #F7EFFF;
+    --purple-quaternary: #E6D3F9;
+    --purple-light: #FBF8FE;
+    --gray-primary: #2D3940;
+    --gray-secondary: #4A565D;
+    --gray-tertiary: #47494A;
+    --gray-quaternary: #7D919C;
+    --gray-light: #F2F3F4;
+    --dark-gray: #18262D;
+    --blue-primary: #0089B4;
+    --blue-secondary: #E4F5FB;
+    --blue-tertiary: #E4ECF1;
+    --orange-dark: #D96500;
+    --orange-light: #FFE5CE;
+    --pink-light: #FFDCF0;
+    --green-dark: #00A175;
+    --green-light: #D4FBF0;
+    --red-primary: #9e0f1c;
+    --red-secondary: #e60015;
+    --red-tertiary: #ff0015;
+    --white: #ffffff;
+
+}
+
+
+#tempo-grid {
+    height: inherit;
+    width: inherit;
+}
+
+#tempo-app {
+    height: inherit;
+    width: inherit;
+}
+
+#tempo-stopwatch-grid-app {
+    max-width: 98.25%;
+    max-height: 750px;
+    height: 97.25%;
+    padding-top: 10px;
+    padding-bottom: 6px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    gap: 10px;
+    grid-template-areas:
+        "table table time time time time"
+    ;
+}
+
+#tempo-stopwatch-grid-table {
+
+    grid-area: table;
+    background-color: var(--purple-tertiary);
+    border-radius: 16px;
+    overflow: auto;
+}
+
+#tempo-stopwatch-table {
+    width: 100%;
+    text-align: center;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+#tempo-stopwatch-grid-table th {
+    border-bottom: 2px solid var(--purple-quaternary);
+    font-size: 18px;
+    color: var(--gray-primary);
+
+    background-color: var(--purple-tertiary);
+    position: sticky;
+    z-index: 10;
+    top: 0px;
+    padding: 8px;    
+}
+
+.num-data-table, .mark-data-table, .duration-data-table {
+    padding: 15px 0px 15px 0px;
+    text-align: center;
+    vertical-align: center;
+    font-size: 18px;
+
+}
+
+.stopwatch-table-row-data {
+    cursor: pointer;
+    margin: 5px 0px 5px 0px;
+    padding: 5px 0px 5px 0px;
+}
+
+.stopwatch-table-row-data:hover {
+    background-color: var(--purple-quaternary);
+}
+
+
+#tempo-grid-stopwatch {
+    grid-area: time;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+#tempo-stopwatch-display {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#tempo-stopwatch-display-time {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 120px;
+    color: var(--gray-primary);
+}
+
+#stopwatch-buttons {
+    padding: 20px 0px 0px 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 15px;
+}
+
+.stopwatch-button {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    border: none;
+    border-radius: 12px;
+    width: 220px;
+    height: 50px;
+    cursor: pointer;
+}
+
+#stopwatch-start-button {
+    background-color: var(--purple-primary);
+    color: var(--white);
+    outline: none;
+}
+
+
+#stopwatch-start-button:hover {
+    background-color: var(--purple-secondary);
+    color: var(--white);
+
+}
+
+#stopwatch-mark-button {
+    background-color: var(--purple-quaternary);
+    color: var(--purple-primary);
+    outline: none;
+}
+
+#stopwatch-mark-button:hover {
+    background-color: var(--purple-quaternary);
+    color: var(--purple-secondary);
+}
+
+#stopwatch-resetOrStop-button {
+    background-color: var(--red-secondary);
+    color: var(--white);
+    outline: none;
+}
+
+#stopwatch-resetOrStop-button:hover {
+    background-color: var(--red-tertiary);
+    color: var(--white);
+}
+
+#tempo-stopwatch-display-region {
+    text-align: center;
+    padding: 20px;
+    font: 'Roboto', sans-serif;
+    font-size: 32px;
+    font-weight: 400;
+    color: var(--gray-primary);
+}
+
+#tempo-stopwatch-display-date {
+    text-align: center;
+    padding: 20px;
+    font: 'Roboto', sans-serif;
+    font-size: 24px;
+    font-weight: 300;
+    color: var(--gray-primary);
+}
+
+#tempo-stopwatch-bottom {
+    align-self: flex-end;
+    cursor: pointer;
+}
+
+.icon-dashboard-bottom {
+    color: var(--gray-secondary);
+}
+
+#tempo-stopwatch-bottom:hover > .icon-dashboard-bottom {
+    color: var(--purple-secondary);
+}
+
+#tempo-stopwatch-grid-adsense {
+    background: transparent;
+    min-width: 250px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 10px 10px 10px 10px;
+}
+
+#tempo-stopwatch-adsense-title {
+    text-align: center;
+    color: var(--white);
+}

@@ -1,0 +1,111 @@
+:root {
+    --purple-primary: #580091;
+    --purple-secondary: #9A00FF;
+    --purple-tertiary: #F7EFFF;
+    --purple-quaternary: #E6D3F9;
+    --purple-light: #FBF8FE;
+    --gray-primary: #2D3940;
+    --gray-secondary: #4A565D;
+    --gray-tertiary: #47494A;
+    --gray-quaternary: #7D919C;
+    --gray-light: #F2F3F4;
+    --dark-gray: #18262D;
+    --blue-primary: #0089B4;
+    --blue-secondary: #E4F5FB;
+    --blue-tertiary: #E4ECF1;
+    --orange-dark: #D96500;
+    --orange-light: #FFE5CE;
+    --pink-light: #FFDCF0;
+    --green-primary: #003B03;
+    --green-dark: #00A175;
+    --green-light: #D4FBF0;
+    --red-primary: #9e0f1c;
+    --red-secondary: #e60015;
+    --red-tertiary: #ff0015;
+    --white: #ffffff;
+
+}
+
+@media only screen and (max-width: 800px) {
+    
+    #profile-delete-done-grid h1 {
+        font-family: 'Quicksand', sans-serif;
+        font-size: 40px;
+        color: var(--gray-secondary);
+    }
+
+    #profile-delete-done-grid h2 {
+        font-family: 'Quicksand', sans-serif;
+        font-size: 30px;
+        color: var(--gray-secondary);
+    }
+
+    #profile-delete-done-grid h3 {
+        font-family: 'Quicksand', sans-serif;
+        font-size: 25px;
+        font-weight: 700;
+        color: var(--purple-primary);
+    }
+
+    #profile-delete-done-grid h4 {
+        font-family: 'Quicksand', sans-serif;
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--purple-primary);
+        padding: 6px 0px 6px 0px;
+    }
+
+    #profile-delete-done-grid #horizontal-line {
+        max-width: 98%;
+        border: 1px solid var(--purple-primary);
+        opacity: 0.15;
+    }
+
+    #profile-delete-done-grid #page-subtitle {
+        color: var(--purple-primary);
+        padding-bottom: 6px;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 300;
+    }
+
+    #profile-delete-done-grid #page-subtitle {
+        padding-top: 6px;
+    }
+
+    #profile-delete-done-grid {
+        max-width: 98.25%;
+        height: 98%;
+        padding-top: 10px;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(2, auto);
+        gap: 8px;
+        grid-template-areas: 
+            "data"
+            "adsense"
+            ;
+    }
+
+    #profile-delete-done-content {
+        grid-area: data;
+
+    }
+
+    #profile-delete-done-adsense {
+        background-color: transparent;
+        border-radius: 12px;
+        grid-area: adsense;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+
+    }
+
+    #profile-delete-done-adsense #adsense-title {
+        color: var(--purple-primary);
+    }
+
+}
+

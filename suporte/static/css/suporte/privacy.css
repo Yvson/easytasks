@@ -1,0 +1,134 @@
+:root {
+    --purple-primary: #580091;
+    --purple-secondary: #9A00FF;
+    --purple-tertiary: #F7EFFF;
+    --purple-quaternary: #E6D3F9;
+    --purple-light: #FBF8FE;
+    --gray-primary: #2D3940;
+    --gray-secondary: #4A565D;
+    --gray-tertiary: #47494A;
+    --gray-quaternary: #7D919C;
+    --gray-light: #F2F3F4;
+    --dark-gray: #18262D;
+    --blue-primary: #0089B4;
+    --blue-secondary: #E4F5FB;
+    --blue-tertiary: #E4ECF1;
+    --orange-dark: #D96500;
+    --orange-light: #FFE5CE;
+    --pink-light: #FFDCF0;
+    --green-dark: #00A175;
+    --green-light: #D4FBF0;
+    --red-primary: #9e0f1c;
+    --red-secondary: #e60015;
+    --red-tertiary: #ff0015;
+    --white: #ffffff;
+
+}
+
+
+.privacy-page h1 {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 40px;
+    color: var(--gray-secondary);
+}
+
+.privacy-page h2 {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 30px;
+    color: var(--gray-secondary);
+}
+
+.privacy-page h3 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    font-weight: 400;
+    color: var(--purple-primary);
+}
+
+.privacy-page h4 {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--purple-primary);
+    padding: 6px 0px 6px 0px;
+}
+
+
+#privacy-grid {
+    max-width: 98.25%;
+    height: 98%;
+    padding: 25px 0px 25px 0px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    grid-template-areas:
+        "privacy privacy privacy privacy privacy adsense"
+    ;
+    gap: 8px;
+}
+
+
+#privacy-texto {
+    background-color: var(--white);
+    border-radius: 12px;
+    grid-area: privacy;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: justify;
+    padding: 0px 8px 0px 0px;
+
+}
+
+#privacy-texto p {
+    color: var(--gray-secondary);
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+#privacy-texto ul {
+    padding-left: 40px;
+
+}
+
+#privacy-texto .no-style {
+    list-style-type: none;
+}
+
+#privacy-texto li {
+    color: var(--gray-secondary);
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    padding: 4px 0px 4px 0px;
+}
+
+#opt-out-cookies {
+    color: var(--purple-primary);
+    cursor: pointer;
+}
+
+#opt-out-cookies:hover {
+    color: var(--purple-secondary);
+}
+
+
+#privacy-adsense {
+    background-color: transparent;
+    min-width: 250px;
+    border-radius: 12px;
+    display: flex;
+    grid-area: adsense;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+
+#privacy-adsense h1 {
+    color: var(--white);
+}
+
+

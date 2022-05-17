@@ -1,0 +1,316 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %} Easytasks - Conversor de Unidades {% endblock %}
+
+{% block content %}
+<div class="conversor-page">
+    <h1 id="page-title"> Conversor de Unidades </h1>
+
+    <hr id="horizontal-line">
+
+    <div class="conversor-page-menu">
+        <ul class="conversor-menu-list">
+            <a href="{% url 'conversor_view' 'massa' %}">
+                <li class="conversor-menu-option {% if section == 'massa' %} menu-option-selected {% endif %}" id="mass-option">
+                    Massa
+                </li>
+            </a>
+            <a href="{% url 'conversor_view' 'tempo' %}">
+                <li class="conversor-menu-option {% if section == 'tempo' %} menu-option-selected {% endif %}" id="time-option">
+                    Tempo
+                </li>
+            </a>
+            <a href="{% url 'conversor_view' 'comprimento' %}">
+                <li class="conversor-menu-option {% if section == 'comprimento' %} menu-option-selected {% endif %}" id="length-option">
+                    Comprimento
+                </li>
+            </a>
+            <a href="{% url 'conversor_view' 'area' %}">
+                <li class="conversor-menu-option {% if section == 'area' %} menu-option-selected {% endif %}" id="area-option">
+                    Área
+                </li>
+            </a>
+            <a href="{% url 'conversor_view' 'volume' %}">
+                <li class="conversor-menu-option {% if section == 'volume' %} menu-option-selected {% endif %}" id="volume-option">
+                    Volume
+                </li>
+            </a>
+            <a href="{% url 'conversor_view' 'velocidade' %}">
+                <li class="conversor-menu-option {% if section == 'velocidade' %} menu-option-selected {% endif %}" id="speed-option">
+                    Velocidade
+                </li>
+            </a>
+            <a href="{% url 'conversor_view' 'aceleracao' %}">
+                <li class="conversor-menu-option {% if section == 'aceleracao' %} menu-option-selected {% endif %}" id="aceleration-option">
+                    Aceleração
+                </li>
+            </a>
+            <a href="{% url 'conversor_view' 'forca' %}">
+                <li class="conversor-menu-option {% if section == 'forca' %} menu-option-selected {% endif %}" id="force-option">
+                    Força
+                </li>
+            </a>
+            <a href="{% url 'conversor_view' 'pressao' %}">
+                <li class="conversor-menu-option {% if section == 'pressao' %} menu-option-selected {% endif %}" id="pressure-option">
+                    Pressão
+                </li>
+            </a>
+            <a href="{% url 'conversor_view' 'temperatura' %}">
+                <li class="conversor-menu-option {% if section == 'temperatura' %} menu-option-selected {% endif %}" id="temperature-option">
+                    Temperatura
+                </li>
+            </a>            
+        </ul>
+    </div>
+ 
+    <div id="conversor-page-content">
+        <div id="conversor-grid">
+            <div id="conversor-form">
+                <div id="conversor-form-input">
+                    <div class="input-div">
+                        <label for="from-input">De:</label><br>
+                        <input class="input-data-form"
+                            type="number"
+                            id="from-number-input"
+                            name="from-number-input"
+                            placeholder="Insira o Valor"
+                            step="any"
+                        >
+                    </div>
+                        <i class="material-icons pause">pause</i>
+                    <div class="input-div">
+                        <label for="to-input">Para:</label><br>
+                        <input class="input-data-form"
+                            type="number"
+                            id="to-number-input"
+                            name="to-number-input"
+                            placeholder="Insira o Valor"
+                            step="any"
+                        >
+                    </div>
+                </div>
+
+                <div id="conversor-form-units">
+                    <select name="from-unit" id="from-unit" size="30">
+                        {% for option in options %}
+                            <option value="{{ forloop.counter0 }}">{{ option }}</option>
+                        {% endfor %}
+                    </select>
+
+                    <i class="material-icons double-arrow">swap_horiz</i>
+
+                    <select name="to-unit" id="to-unit" size="30">
+                        {% for option in options %}
+                            <option value="{{ forloop.counter0 }}">{{ option }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            
+            <div id="conversor-table">
+                <div id="conversor-table-header">
+                    <p>Limite máximo: 15 itens</p>
+                    <div>
+                        <button id='save-button' class="conversor-button">Salvar</button>
+                    </div>
+                </div>
+                <div id="conversor-table-frame">
+                    <table id="conversor-table-saved">
+                        <tr>
+                            <th id="conversor-head-date">Data</th>
+                            <th id="conversor-head-from">De</th>
+                            <th id="conversor-head-to">Para</th>
+                            <th id="conversor-head-actions">Ações</th>
+                        </tr>
+                        {% for conversion in saved_conversions %}
+                            <tr>
+                                <td class="conversor-table-data">
+                                    {{conversion.date|date:"d/N/y"}} 
+                                    {{conversion.date|time:"H:i:s"}}
+                                    (UTC{{conversion.date|time:"O"}})
+                                </td>
+                                <td class="conversor-table-data">{{conversion.unit_from}}</td>
+                                <td class="conversor-table-data">{{conversion.unit_to}}</td>
+                                <td class="conversor-data-actions">
+                                    <i onclick="delConversion('{{conversion.id}}')" class="material-icons delete_icon">delete_forever</i>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+            <div id="conversor-adsense">
+                {% include "adsense_base.html" with personalizedAds=cookies.cookie.cookie_marketing.status %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+<script>
+{% block firstScript %}
+
+    {% autoescape off %}
+        var measurements = {{measurements}};
+    {% endautoescape %}
+
+        // Input Elements
+        const inputFrom = document.getElementById('from-number-input');
+        const inputTo = document.getElementById('to-number-input');
+
+        // Select & Option Elements
+        const selectionFrom = document.getElementById('from-unit');
+        const selectionTo = document.getElementById('to-unit');
+
+        // Button
+        const saveButton = document.getElementById('save-button');
+
+        // Auxiliary Functions
+
+        
+        // Functions
+        function convertTo(measurementsList, inputFromField, inputToField, selectionFrom, selectionTo) {
+            if ( '{{section}}' === 'temperatura') {
+                let X = parseFloat(inputFromField.value);
+                let m = measurementsList[parseInt(selectionFrom.value)];
+                let outputUnit = Object.entries(m.fields).sort();
+                outputUnit = outputUnit[parseInt(selectionTo.value)][0];
+                let outputValue = eval(m.fields[outputUnit]);
+                outputValue = Number.parseFloat(outputValue).toExponential(6);
+                return outputValue;
+            } else {
+                let m = measurementsList[parseInt(selectionFrom.value)];
+                let outputUnit = Object.entries(m.fields).sort();
+                outputUnit = outputUnit[parseInt(selectionTo.value)][0];
+                let outputValue = parseFloat(inputFromField.value)*parseFloat(m.fields[outputUnit]);
+                outputValue = Number.parseFloat(outputValue).toExponential(6);                
+                return outputValue;
+            }
+            
+            
+        }
+
+        function convertFrom(measurementsList, inputFromField, inputToField, selectionFrom, selectionTo) {
+            let outputValue;
+            if ( '{{section}}' === 'temperatura') {
+                let X = parseFloat(inputToField.value);
+                let m = measurementsList[parseInt(selectionTo.value)];
+                let outputUnit = Object.entries(m.fields).sort();
+                outputUnit = outputUnit[parseInt(selectionFrom.value)][0];
+                let outputValue = eval(m.fields[outputUnit]);
+                outputValue = Number.parseFloat(outputValue).toExponential(6);
+                return outputValue;
+            } else {
+                let m = measurementsList[parseInt(selectionTo.value)];
+                let outputUnit = Object.entries(m.fields).sort();
+                outputUnit = outputUnit[parseInt(selectionFrom.value)][0];
+                let outputValue = parseFloat(inputToField.value)*parseFloat(m.fields[outputUnit]);
+                outputValue = Number.parseFloat(outputValue).toExponential(6);
+                return outputValue;
+            }
+            
+        }    
+
+        function updateInputTo() {
+            inputTo.value = convertTo(measurements, inputFrom, inputTo, selectionFrom, selectionTo);
+            if (inputTo.value === "") {
+                inputTo.value = 0;
+                inputFrom.value = 0;
+            }
+        }
+
+        function updateInputFrom() {
+            inputFrom.value = convertFrom(measurements, inputFrom, inputTo, selectionFrom, selectionTo);
+            if (inputFrom.value === "") {
+                inputTo.value = 0;
+                inputFrom.value = 0;
+            }
+        }
+
+        function delConversion(conversionId) {
+            // FetchAPI
+            var payload = {
+                conversionId: conversionId,
+            };
+            var myInit = {
+                headers: {
+                    'X-CSRFToken': csrftoken,
+                    'Content-Type': 'application/json',
+                    },
+                body: JSON.stringify(payload),
+                method: 'DELETE',
+                mode: 'same-origin',
+            };
+            const request = new Request("{{ request.path }}", myInit);
+            fetch(request).then(function(response) {
+                if (response.status === 200) {
+                    window.location.assign(response.url);
+                } else {
+                    throw new Error('Something went wrong on api server!');
+                }
+            });        
+        }
+
+        function saveConversion() {
+            // FetchAPI
+            var payload = {
+                unitfrom: inputFrom.value + ' ' + Object.values(selectionFrom)[selectionFrom.value].innerHTML,
+                unitto: inputTo.value + ' ' + Object.values(selectionTo)[selectionTo.value].innerHTML,
+            };
+            var data = new FormData();
+            data.append('json', JSON.stringify(payload));
+            var myInit = {
+                headers: {
+                    'X-CSRFToken': csrftoken,
+                    },
+                body: data,
+                method: 'POST',
+                mode: 'same-origin',
+            };
+            const request = new Request( "{{ request.path }}", myInit);
+            let URL;
+            fetch(request).then(function(response) {
+                if (response.status === 200) {
+                    URL = response.url;
+                    switch (response.redirected) {
+                        case true:
+                            return response;
+                        default:
+                            return response.json();
+                    }
+                } else {
+                    throw new Error('Something went wrong on api server!');
+                }
+            }).then(function(data) {
+                window.location.assign(URL);
+                if (data.status === 'Exceeded Limit.') {
+                    alert('Você atingiu o limite máximo de 15 itens.');
+                }
+            });
+        }
+
+        // Initial Values
+        inputFrom.value = inputTo.value = 1;
+        selectionFrom.value = selectionTo.value =  '0';
+
+        // Listeners
+        inputFrom.addEventListener('keyup', updateInputTo);
+        inputTo.addEventListener('keyup', updateInputFrom);
+        inputFrom.addEventListener('blur', function() {
+            inputFrom.value = Number.parseFloat(inputFrom.value).toExponential(6);
+        });
+        inputTo.addEventListener('blur', function() {
+            inputTo.value = Number.parseFloat(inputTo.value).toExponential(6);
+        });
+        selectionFrom.addEventListener('click', updateInputFrom);
+        selectionFrom.addEventListener('keyup', updateInputFrom);
+        selectionFrom.addEventListener('change', updateInputFrom);
+        selectionTo.addEventListener('click', updateInputTo);
+        selectionTo.addEventListener('keyup', updateInputTo);
+        selectionTo.addEventListener('change', updateInputTo);
+        saveButton.addEventListener('click', saveConversion);
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "conta_base.html" %}
+
+{% load static %}
+
+{% block title %} Easytasks - Excluir Conta {% endblock %}
+
+{% block conta_content %}
+
+<div id="profile-delete-done-grid">
+    <div id="profile-delete-done-content">
+        <h3 id="page-subtitle"> Sua conta foi excluída com sucesso. Caso queira, você pode <a href="{% url 'register'%}"><span class="bold">Criar</span></a> uma nova conta. </h3>
+    </div>
+    <div id="profile-delete-done-adsense">
+        {% include "adsense_base.html" with personalizedAds=cookies.cookie.cookie_marketing.status %}
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %} Easytasks - Erro 404 {% endblock %}
+
+{% block content%}
+<div class="not-found-page">
+
+    <h1 id="page-title"> Página não encontrada. </h1>
+
+    <hr id="horizontal-line">
+
+    <h3 id="page-subtitle"> A página buscada não existe. </h3>
+
+    <div id="not-found-content">
+        <div id="message">
+            <h1 id="error-404">Erro 404.</h1>
+            <a href="{% url 'dashboard:dashboard_view' %}">
+                <h3 id="error-404-subtitle">Retornar para a página principal.</h3>
+            </a>
+        </div>
+        <div id="adsense">
+            <h2>Google Adsense</h2>
+            {% include "adsense_base.html" %}
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock %}

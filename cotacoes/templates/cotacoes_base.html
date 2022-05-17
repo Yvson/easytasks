@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %} Easytasks - Cotações {% endblock %}
+
+{% block content %}
+<div class="cotacoes-page">
+    <h1 id="page-title"> Cotações </h1>
+
+    <hr id="horizontal-line">
+
+    <div class="cotacoes-page-menu">
+        <ul class="cotacoes-menu-list">
+            <a href="{% url 'currencies_view' 'BRL' %}">
+                <li class="cotacoes-menu-option {% if section == 'currencies' %} menu-option-selected {% endif %}"  id="currencies-option">
+                    Moedas FIAT
+                </li>
+            </a>
+            <a href="{% url 'cryptocurrencies_view' 'BRL' %}">
+                <li class="cotacoes-menu-option {% if section == 'criptocurrencies' %} menu-option-selected {% endif %}" id="criptocurrencies-option">
+                    Criptomoedas
+                </li>
+            </a>
+        </ul>
+    </div>
+
+    <div id="cotacoes-page-content">
+        {% block cotacoes_content %}
+        {% endblock %}
+    </div>
+
+</div>
+ 
+
+{% endblock %}

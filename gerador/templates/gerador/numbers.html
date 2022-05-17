@@ -1,0 +1,393 @@
+{% extends "gerador_base.html" %}
+
+{% load static %}
+
+{% load wrap_list %}
+
+{% block title %} Easytasks - Gerador {% endblock %}
+
+{% block gerador_content %}
+<div id="gerador-numbers-grid">
+    <div id="gerador-numbers-input">
+        <form id="gerador-numbers-form" action="" method="post">
+            <div class="input-data-div">
+                <label form="gerador-numbers-form">Limite Inferior:</label><br>
+                <input class="input-data-form"
+                    type="number"
+                    id="lower-limit-input"
+                    name="lower-limit-input"
+                    placeholder="Valor Mínimo"
+                    step="1"
+                    required
+                >
+            </div>
+            <div class="input-data-div">
+                <label form="gerador-numbers-form">Limite Superior:</label><br>
+                <input class="input-data-form"
+                    type="number"
+                    id="upper-limit-input"
+                    name="upper-limit-input"
+                    placeholder="Valor Máximo"
+                    step="1"
+                    required
+                >
+            </div>
+            <div class="input-data-div">
+                <label form="gerador-numbers-form">Quantidade de Números:</label><br>
+                <input class="input-data-form"
+                    type="number"
+                    id="quantity-numbers-input"
+                    name="quantity-numbers-input"
+                    placeholder="Quantos números?"
+                    step="1"
+                    min="0"
+                    required
+                >
+            </div>
+            <div class="input-data-div">
+                <label form="gerador-numbers-form">Quantidade de Colunas:</label><br>
+                <input class="input-data-form"
+                    type="number"
+                    id="quantity-columns-input"
+                    name="quantity-columns-input"
+                    placeholder="Quantas colunas?"
+                    step="1"
+                    min="0"
+                    required
+                >
+            </div>
+            <div class="input-data-div">
+                <label form="gerador-numbers-form">Ordem dos Números:</label><br>
+                <select class="input-data-select"
+                    type="number"
+                    id="numbers-order-input"
+                    name="numbers-order-input"
+                    size="1"
+                    required
+                >
+                    <option value="no-order">Sem Ordem</option>
+                    <option value="asc">Crescente</option>
+                    <option value="desc">Decrescente</option>
+                </select>
+            </div>
+            <div class="input-data-div">
+                <label form="gerador-numbers-form">Repetição:</label>
+                <br>
+                <label class="checkbox-container" id="label-repetition">Permitir Repetição
+                    <input class="checkbox-repetition"
+                        type="checkbox"
+                        id="repetition-input"
+                        name="repetition-input"
+                    >
+                    <span class="checkbox-checkmark"></span>
+                </label>
+            </div>
+            <div class="buttons-form-div">
+                <button id="generate-button" class="gerador-generate-button" type="submit"> Gerar </button>
+                <button id="save-button" class="gerador-save-button" type="submit"> Salvar </button>
+                <p>Limite Máximo: 15 itens</p>
+            </div>
+        {% csrf_token %}
+        </form>
+        
+
+    </div>
+  
+    <div id="gerador-numbers-generated">
+        <h3 id="numbers-generated-title"> Números Gerados </h3>
+        <div id="numbers-generated">
+            <table id="table-numbers-generated">
+                {% for number in numbers %}
+                    {% for num in number.numbers|wraplist:number.columns%}
+                        <tr>
+                            <td class="gerador-table-data">{{num|join:", "}}</td>
+                        </tr>
+                    {% endfor %}
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+    <div id="gerador-numbers-table">
+        <div id="gerador-table-frame">
+            <table id="gerador-saved-numbers-table">
+                <thead>
+                    <tr>
+                        <th id="gerador-head-date">Data</th>
+                        <th id="gerador-head-numbers">Números</th>
+                        <th id="gerador-head-actions">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for number in numbers_list %}
+                        <tr>
+                            <td class="gerador-table-data">{{ number.date }}</td>
+                            <td class="gerador-table-data">{{ number.numbers|truncatechars:75 }}</td>
+                            <td class="gerador-table-data">
+                                <a href="{% url 'number_view' number.id %}">
+                                    <i class="material-icons visibility_icon">visibility</i>
+                                </a>
+                                <i onclick="delNumber('{{number.id}}')" class="material-icons delete_icon">delete_forever</i>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="gerador-numbers-adsense">
+        {% include "adsense_base.html" with personalizedAds=cookies.cookie.cookie_marketing.status %}
+    </div>
+
+</div>
+{% endblock %}
+
+<script>
+{% block firstScript %}
+
+    // Input Elements
+    const inputLowerLimit = document.getElementById('lower-limit-input');
+    const inputUpperLimit = document.getElementById('upper-limit-input');
+    const inputNumberQuantity = document.getElementById('quantity-numbers-input');
+    const inputColumnQuantity = document.getElementById('quantity-columns-input');
+    const inputOrder = document.getElementById('numbers-order-input');
+    const inputRepetition = document.getElementById('repetition-input');
+    
+    // Buttons
+    const generateButton = document.getElementById('generate-button');
+    const saveButton = document.getElementById('save-button');
+
+    // Generated Numbers div
+    const generatedNumbersDiv = document.getElementById('numbers-generated');
+    const tableGeneratedNumbersDiv = document.getElementById('table-numbers-generated');
+
+    // Initial Values
+    let LOWER_LIMIT = inputLowerLimit.value = 1;
+    let UPPER_LIMIT = inputUpperLimit.value = 50;
+    let NUMBERS_QTY = inputNumberQuantity.value = 50;
+    let COLUMNS_QTY = COLUMNS_QTY_SAVE = inputColumnQuantity.value = 5;
+    let ORDER = inputOrder.value = 'no-order';
+    let REPEAT = inputRepetition.checked = false;
+
+    
+    // Auxiliary Functions
+    function getRandomNumber(min, max) {
+        let minimum = Math.ceil(min);
+        let maximum = Math.floor(max);
+        return Math.floor(Math.random() * (max - minimum + 1) + minimum); //The maximum is exclusive and the minimum is inclusive
+    }
+
+    function generateList(quantityOfNumbers, min, max, repetition, order) {
+        let finalList = [];
+        
+        for (let i=0; i<quantityOfNumbers; i++) {
+            if (repetition) {
+                finalList.push(getRandomNumber(min, max));
+            } else {
+                if (max-min < quantityOfNumbers) { // (max-min) must be greater than or equal to quantityOfNumbers
+                    quantityOfNumbers = (max-min)+1;
+                }
+                new_number = getRandomNumber(min, max);
+                while (finalList.includes(new_number)) {
+                    new_number = getRandomNumber(min, max);
+                }
+                finalList.push(new_number);
+            }
+        }
+
+        switch (order) {
+            case "desc":
+                finalList.sort((a,b) => b-a);
+                break;
+            case "asc":
+                finalList.sort((a,b) => a-b);
+                break;
+            default:
+                break;    
+        }
+        return finalList;
+    }
+
+    function splitList(listOfNumbers, quantityOfColumns) {
+        let splittedList = [];
+        for (let i in listOfNumbers) {
+            if (i % quantityOfColumns === 0) {
+                let i_final = parseInt(i)+quantityOfColumns;
+                splittedList.push(listOfNumbers.slice(i, i_final));
+            }
+        }
+        return splittedList;
+    }
+
+    function formatList(splittedList) {
+        let formattedList = [];
+        for (let i in splittedList) {
+            formattedList.push(splittedList[i].join(', '));
+        }
+        return formattedList;
+    }
+
+    function invertUpperAndLowerLimits() {
+        UPPER_LIMIT = inputLowerLimit.value;
+        LOWER_LIMIT = inputUpperLimit.value;
+        inputUpperLimit.value = UPPER_LIMIT;
+        inputLowerLimit.value = LOWER_LIMIT; 
+    }
+
+    function correctFloatNumbers() {
+        UPPER_LIMIT = inputUpperLimit.value = Math.floor(inputUpperLimit.value);
+        LOWER_LIMIT = inputLowerLimit.value = Math.floor(inputLowerLimit.value);
+        NUMBERS_QTY = inputNumberQuantity.value = Math.floor(inputNumberQuantity.value);
+        COLUMNS_QTY = inputColumnQuantity.value = Math.floor(inputColumnQuantity.value);
+    }
+
+    function correctNegativeNumbers() {
+        NUMBERS_QTY = inputNumberQuantity.value = Math.sign(inputNumberQuantity.value) === -1 ? String(-inputNumberQuantity.value) : inputNumberQuantity.value;
+        COLUMNS_QTY = inputColumnQuantity.value = Math.sign(inputColumnQuantity.value) === -1 ? String(-inputColumnQuantity.value) : inputColumnQuantity.value;
+    }
+
+    function correctQuantityOfNumbers() {
+        NUMBERS_QTY = inputNumberQuantity.value = (UPPER_LIMIT-LOWER_LIMIT+1);
+    }
+
+    function saveNumber() {
+        // FetchAPI
+        var payload = {
+            numbers: tableGeneratedNumbersDiv.innerText.replaceAll('\n', ', '),
+            columns: COLUMNS_QTY_SAVE,
+        };
+        var data = new FormData();
+        data.append('json', JSON.stringify(payload));
+        var myInit = {
+            headers: {
+                'X-CSRFToken': csrftoken,
+                },
+            body: data,
+            method: 'POST',
+            mode: 'same-origin',
+        };
+        const request = new Request( "{{ request.path }}", myInit);
+        let URL;
+        fetch(request).then(function(response) {
+            if (response.status === 200) {
+                URL = response.url;
+                switch (response.redirected) {
+                    case true:
+                        return response;
+                    default:
+                        return response.json();
+                }
+            } else {
+                throw new Error('Something went wrong on api server!');
+            }
+        }).then(function(data) {
+            if (window.isUserLogged) {
+                if (data.status === 'Exceeded Limit.') {
+                    alert('Você atingiu o limite máximo de 15 itens.');
+                } else {
+                    window.location.assign("{% url 'numbers_view' %}");
+                }
+            } else {
+                window.location.assign(URL);
+            }
+            
+        });
+    }
+        
+    function delNumber(numberId) {
+        // FetchAPI
+        var payload = {
+            numberId: numberId,
+        };
+
+        var myInit = {
+            headers: {
+                'X-CSRFToken': csrftoken,
+                'Content-Type': 'application/json',
+                },
+            body: JSON.stringify(payload),
+            method: 'DELETE',
+            mode: 'same-origin',
+        };
+        const request = new Request("{{ request.path }}", myInit);
+        fetch(request).then(function(response) {
+            if (response.status === 200) {
+                window.location.assign("{% url 'numbers_view' %}");
+            } else {
+                throw new Error('Something went wrong on api server!');
+            }
+        });        
+    }    
+
+    // Listeners
+    inputUpperLimit.addEventListener("change", function() {
+        UPPER_LIMIT = parseInt(inputUpperLimit.value);
+    });
+    inputLowerLimit.addEventListener("change", function() {
+        LOWER_LIMIT = parseInt(inputLowerLimit.value);
+    });
+    inputNumberQuantity.addEventListener("change", function() {
+        NUMBERS_QTY = parseInt(inputNumberQuantity.value);
+    });
+    inputColumnQuantity.addEventListener("change", function() {
+        COLUMNS_QTY = parseInt(inputColumnQuantity.value);
+    });
+    inputOrder.addEventListener("change", function() {
+        ORDER = String(inputOrder.value);
+    });
+    inputRepetition.addEventListener("change", function() {
+        REPEAT = Boolean(inputRepetition.checked);
+    });
+    
+    generateButton.addEventListener("click", function(event) {
+        // Prevent default behavior
+        event.preventDefault();
+
+        // Correcting negative numbers
+        correctNegativeNumbers();
+
+        // Trunc float number characters
+        correctFloatNumbers();
+
+        // If lower limit is greater than upper limit
+        if (parseInt(inputUpperLimit.value) < parseInt(inputLowerLimit.value)) {
+            invertUpperAndLowerLimits();
+        }
+
+        // In Case (upperLimit-lowerLimit < quantityOfNumbers) and repeatition option is OFF, 
+        // quantity of numbers should be equal to difference of limits.
+        if (UPPER_LIMIT-LOWER_LIMIT < NUMBERS_QTY && !REPEAT) {
+            correctQuantityOfNumbers();
+        }
+
+        // Saving columns quantity
+        COLUMNS_QTY_SAVE = COLUMNS_QTY;
+
+        // Generating and formmating numbers into a list
+        let generatedNumbers = generateList(NUMBERS_QTY, LOWER_LIMIT, UPPER_LIMIT, REPEAT, ORDER);
+        generatedNumbers = splitList(generatedNumbers, COLUMNS_QTY);
+        generatedNumbers = formatList(generatedNumbers);
+
+
+        // Cleaning generatedNumbersDiv and Appending new generated numbers
+        tableGeneratedNumbersDiv.replaceChildren();
+        for (let i in generatedNumbers) {
+            let g = document.createElement("tr");
+            let h = document.createElement("td");
+            let t = document.createTextNode(generatedNumbers[i]);
+            g.appendChild(h);
+            h.appendChild(t);
+            tableGeneratedNumbersDiv.appendChild(g);
+        }
+
+    });
+
+    saveButton.addEventListener("click", function(event) {
+        event.preventDefault();
+        saveNumber();
+    });
+
+
+{% endblock %}
+</script>

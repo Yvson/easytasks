@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %} Easytasks - Dashboard {% endblock %}
+
+{% block content %}
+<div id="dashboard-page" class="dashboard-page">
+
+    <h1 id="page-title"> Dashboard </h1>
+
+    <hr id="horizontal-line">
+
+    <h3 id="page-subtitle"> Painel Geral </h3>
+
+    <div id="dashboard-content">
+        <div id="menu-app">
+        </div>
+        <div id="adsense">
+            {% include "adsense_base.html" with personalizedAds=cookies.cookie.cookie_marketing.status %}
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+
+{% block dashboardScript %}
+    <script src="{% static 'js/dashboard.js' %}"></script>
+{% endblock %}
+
+<script>
+{% block firstScript %}
+    window.react_mount = document.getElementById('menu-app');
+    window.currenciesAPI = "{% url 'cotacoes:currencies_list' %}"
+    window.cryptocurrenciesAPI = "{% url 'cotacoes:cryptocurrencies_list' %}"
+    window.hrefCotacoes = "{% url 'currencies_view' 'BRL' %}"
+    window.hrefConversor = "{% url 'conversor_view' 'massa' %}"
+    window.hrefGerador = "{% url 'numbers_view' %}"
+    window.hrefTexto = "{% url 'texto_view' 'letras_maiusculas' %}"
+    window.hrefCores = "{% url 'cores_view' 'analogo' %}"
+
+    
+
+{% endblock %}
+</script>

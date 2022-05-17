@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %} Easytasks - Desconectado {% endblock %}
+
+{% block content %}
+<div class="logout-page">
+
+    <h1 id="page-title"> Desconectado. </h1>
+
+    <hr id="horizontal-line">
+
+    <h3 id="page-subtitle"> Você foi desconectado com sucesso. Caso queira, você pode <a href="{% url 'login'%}"><span class="bold">Entrar</span></a> novamente. </h3>
+
+</div>
+
+{% endblock %}

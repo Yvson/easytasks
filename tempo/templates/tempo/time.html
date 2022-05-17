@@ -1,0 +1,40 @@
+{% extends "tempo_base.html" %}
+
+{% load static %}
+
+{% block title %} Easytasks - Relógio {% endblock %}
+
+{% block timeapp %}
+    <div id="tempo-page-content">
+        <div id="tempo-grid">
+        </div>
+
+        <div id="tempo-time-grid-adsense">
+            {% include "adsense_base.html" with personalizedAds=cookies.cookie.cookie_marketing.status %}
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script id="components-info">
+        {% autoescape off %}
+        window.mountingInfo = {
+            appName: '{{section}}',
+            component: document.getElementById('tempo-grid'),
+            timezones: {{timezones}},
+        };
+        {% endautoescape %}
+    </script>
+
+    <script src="{% static 'js/tempo.js' %}"></script>
+
+{% endblock %}
+
+
+
+
+
+
+
+

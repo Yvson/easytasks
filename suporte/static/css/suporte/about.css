@@ -1,0 +1,106 @@
+:root {
+    --purple-primary: #580091;
+    --purple-secondary: #9A00FF;
+    --purple-tertiary: #F7EFFF;
+    --purple-quaternary: #E6D3F9;
+    --purple-light: #FBF8FE;
+    --gray-primary: #2D3940;
+    --gray-secondary: #4A565D;
+    --gray-tertiary: #47494A;
+    --gray-quaternary: #7D919C;
+    --gray-light: #F2F3F4;
+    --dark-gray: #18262D;
+    --blue-primary: #0089B4;
+    --blue-secondary: #E4F5FB;
+    --blue-tertiary: #E4ECF1;
+    --orange-dark: #D96500;
+    --orange-light: #FFE5CE;
+    --pink-light: #FFDCF0;
+    --green-dark: #00A175;
+    --green-light: #D4FBF0;
+    --red-primary: #9e0f1c;
+    --red-secondary: #e60015;
+    --red-tertiary: #ff0015;
+    --white: #ffffff;
+
+}
+
+
+.sobre-page h1 {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 40px;
+    color: var(--gray-secondary);
+}
+
+.sobre-page h2 {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 30px;
+    color: var(--gray-secondary);
+}
+
+.sobre-page h3 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    font-weight: 100;
+    color: var(--purple-primary);
+}
+
+.sobre-page h4 {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--purple-primary);
+    padding: 6px 0px 6px 0px;
+}
+
+#sobre-grid {
+    max-width: 98.25%;
+    height: 96%;
+    padding-top: 25px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    grid-template-areas:
+        "texto texto texto texto texto adsense"
+    ;
+    gap: 8px;
+}
+
+
+#sobre-texto {
+    background-color: var(--white);
+    border-radius: 12px;
+    grid-area: texto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    
+
+}
+
+#sobre-texto p {
+    color: var(--gray-secondary);
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+#sobre-adsense {
+    background-color: transparent;
+    min-width: 250px;
+    border-radius: 12px;
+    display: flex;
+    grid-area: adsense;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+}
+
+
+#sobre-adsense h1 {
+    color: var(--white);
+}
+
+

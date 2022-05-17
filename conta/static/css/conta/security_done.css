@@ -1,0 +1,95 @@
+:root {
+    --purple-primary: #580091;
+    --purple-secondary: #9A00FF;
+    --purple-tertiary: #F7EFFF;
+    --purple-quaternary: #E6D3F9;
+    --purple-light: #FBF8FE;
+    --gray-primary: #2D3940;
+    --gray-secondary: #4A565D;
+    --gray-tertiary: #47494A;
+    --gray-quaternary: #7D919C;
+    --gray-light: #F2F3F4;
+    --dark-gray: #18262D;
+    --blue-primary: #0089B4;
+    --blue-secondary: #E4F5FB;
+    --blue-tertiary: #E4ECF1;
+    --orange-dark: #D96500;
+    --orange-light: #FFE5CE;
+    --pink-light: #FFDCF0;
+    --green-dark: #00A175;
+    --green-light: #D4FBF0;
+    --red-primary: #9e0f1c;
+    --red-secondary: #e60015;
+    --red-tertiary: #ff0015;
+    --white: #ffffff;
+
+}
+
+#security-done-grid h1 {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 40px;
+    color: var(--purple-primary);
+}
+
+#security-done-grid h2 {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 30px;
+    color: var(--purple-primary);
+}
+
+#security-done-grid h3 {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 25px;
+    font-weight: 300;
+    color: var(--purple-primary);
+}
+
+#security-done-grid h4 {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--purple-primary);
+    padding: 6px 0px 6px 0px;
+}
+
+#security-done-grid {
+    max-width: 98.25%;
+    height: 98%;
+    padding-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    gap: 8px;
+    grid-template-areas: 
+        "data data data data data adsense"
+        ;
+}
+
+#security-done-menu {
+    grid-area: data;
+    background-color: var(--white);
+    border-radius: 12px;
+}
+
+#security-done-menu label {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--purple-primary);
+    padding: 6px 0px 6px 0px;
+}
+
+#security-done-adsense {
+    grid-area: adsense;
+    background-color: var(--purple-primary);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#security-done-adsense h1 {
+    text-align: center;
+    color: var(--white);
+
+}

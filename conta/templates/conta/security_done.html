@@ -1,0 +1,19 @@
+{% extends "conta_base.html" %}
+
+{% load static %}
+
+{% block title %} Easytasks - Segurança {% endblock %}
+
+{% block conta_content %}
+<div id="security-done-grid">
+    <div id="security-done-menu">
+        <h2>Senha modificada!</h2>
+        <h4>Sua senha foi alterada com sucesso.</h4>
+    </div>
+    <div id="security-done-adsense">
+        {% include "adsense_base.html" with personalizedAds=cookies.cookie.cookie_marketing.status %}
+    </div>
+
+</div>
+    
+{% endblock %}

@@ -1,0 +1,9 @@
+{% autoescape off %}
+    Olá {{ user.username }},
+    
+    Por favor, acesse o link abaixo para confirmar o seu cadastro:
+    
+    {{ protocol }}://{{ domain }}{% url 'activate_view' uidb64=uid token=token %}
+
+    Você recebeu esse email por conta de um cadastro feito no site da Easytasks através no email {{ user.email }}. Se você não efetuou o cadastro em nosso site, entre em contato através do <a href="{{ protocol }}://{{ domain }}{% url 'contact_view' %}">link</a>.
+{% endautoescape %}

@@ -1,0 +1,402 @@
+:root {
+    --purple-primary: #580091;
+    --purple-secondary: #9A00FF;
+    --purple-tertiary: #F7EFFF;
+    --purple-quaternary: #E6D3F9;
+    --purple-light: #FBF8FE;
+    --gray-primary: #2D3940;
+    --gray-secondary: #4A565D;
+    --gray-tertiary: #47494A;
+    --gray-quaternary: #7D919C;
+    --gray-light: #F2F3F4;
+    --dark-gray: #18262D;
+    --blue-primary: #0089B4;
+    --blue-secondary: #E4F5FB;
+    --blue-tertiary: #E4ECF1;
+    --orange-dark: #D96500;
+    --orange-light: #FFE5CE;
+    --pink-light: #FFDCF0;
+    --green-dark: #00A175;
+    --green-light: #D4FBF0;
+    --red-primary: #9e0f1c;
+    --red-secondary: #e60015;
+    --red-tertiary: #ff0015;
+    --white: #ffffff;
+
+}
+
+#gerador-numbers-grid h1 {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 40px;
+    color: var(--gray-secondary);
+}
+
+#gerador-numbers-grid h2 {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 30px;
+    color: var(--gray-secondary);
+}
+
+#gerador-numbers-grid h3 {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 25px;
+    font-weight: 700;
+    color: var(--purple-primary);
+}
+
+#gerador-numbers-grid h4 {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--purple-primary);
+}
+
+
+#gerador-numbers-grid {
+    max-width: 98.25%;
+    padding: 10px 0px 6px 0px;
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 8px;
+    grid-template-areas:
+        "numbers-input numbers-generated numbers-generated numbers-generated numbers-generated numbers-adsense"
+        "numbers-input numbers-generated numbers-generated numbers-generated numbers-generated numbers-adsense"
+        "numbers-input numbers-table numbers-table numbers-table numbers-table numbers-adsense"
+    ;
+}
+
+#gerador-numbers-input {
+    grid-area: numbers-input;
+    border-radius: 12px;
+}
+
+.input-data-div {
+    padding: 10px 0px 0px 0px;
+}
+
+.input-data-div label {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--purple-primary);
+}
+
+#gerador-numbers-input .input-data-form {
+    width: 16rem;
+    height: 40px;
+    border: 2px solid var(--purple-secondary);
+    border-radius: 8px;
+    padding-left: 10px;
+    color: var(--purple-secondary);
+
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    text-align: center;
+}
+
+#numbers-order-input {
+    background-color: var(--purple-tertiary);
+    color: var(--purple-primary) !important;
+    border: none !important;
+    outline: none !important;
+}
+
+#numbers-order-input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    background-image: url('../../images/arrow-down.svg');
+    background-position: 100% center;
+    background-repeat: no-repeat;
+    outline: none;
+
+}
+
+.input-data-select {
+    width: 17rem;
+    height: 40px;
+    border: 2px solid var(--purple-secondary);
+    border-radius: 8px;
+    padding-left: 10px;
+    color: var(--purple-secondary);
+
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    text-align: left;
+}
+
+
+/*Remove arrows from input - Chrome, Safari, Edge, Opera */
+.input-data-form::-webkit-outer-spin-button,
+.input-data-form::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+/*Remove arrows from input - Firefox */
+.input-data-form[type=number] {
+    -moz-appearance: textfield;
+}
+
+#gerador-numbers-input .input-data-form:focus {
+    outline: none;
+    box-shadow: 0px 0px 0.5px 0.5px var(--purple-primary);
+}
+
+#gerador-numbers-grid .input-data-form::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
+    font-size: 1.25rem;
+    font-style: italic;
+    font-weight: 300;
+    opacity: 0.5;
+}
+
+/* Custom Checkbox - Beginning */
+.checkbox-container {
+    display: block;
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkbox-checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 18px;
+    width: 18px;
+    border-radius: 5px;
+    border: 1px solid var(--purple-secondary);
+    background-color: white;
+}
+
+.checkbox-container:hover input~.checkbox-checkmark {
+    background-color: var(--purple-tertiary);
+}
+
+.checkbox-container input:checked~.checkbox-checkmark {
+    background-color: var(--purple-secondary);
+}
+
+.checkbox-checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkbox-container input:checked~.checkbox-checkmark:after {
+    display: block;
+}
+
+.checkbox-container .checkbox-checkmark:after {
+    left: 6px;
+    top: 2px;
+    width: 4px;
+    height: 8px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+/* Custom Checkbox - End */
+
+#label-repetition {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+}
+
+/* Buttons - Start */
+.buttons-form-div {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 15px 0px 0px 0px;
+}
+
+.buttons-form-div p {
+    height: max-content;
+    font-family: 'Roboto', sans-serif;
+    font-size: 10px;
+    font-weight: 300;
+    font-style: italic;
+    color: red;
+    padding: 4px 0px 0px 0px;    
+}
+
+.gerador-generate-button {
+    width: 17rem;
+    height: 40px;
+    background-color: var(--purple-primary);
+    border-width: 0;
+    border-radius: 12px;
+
+    font-family: 'Quicksand', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--white);
+    cursor: pointer;
+}
+
+.gerador-generate-button:hover {
+    background-color: var(--purple-secondary);
+}
+
+.gerador-generate-button:focus {
+    outline: none;
+}
+
+.gerador-save-button {
+    width: 17rem;
+    height: 40px;
+    background-color: var(--purple-quaternary);
+    border-width: 0;
+    border-radius: 12px;
+
+    font-family: 'Quicksand', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--purple-primary);
+    cursor: pointer;
+}
+
+.gerador-save-button:hover {
+    background-color: var(--purple-quaternary);
+    color: var(--purple-secondary);
+}
+
+.gerador-save-button:focus {
+    outline: none;
+}
+
+/* Buttons - End */
+
+#gerador-numbers-generated {
+    grid-area: numbers-generated;
+    border-radius: 12px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+#numbers-generated {
+    position: inherit;
+    padding: 4px 4px 4px 4px;
+    border: 2px solid var(--purple-primary);
+    border-radius: 12px;
+    max-height: 455px;
+    
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    white-space: nowrap;
+
+}
+
+#numbers-generated table {
+    margin: auto;
+}
+
+#table-numbers-generated td {
+    color: var(--purple-primary);
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+#gerador-numbers-table {
+    grid-area: numbers-table;
+    background-color: var(--purple-tertiary);
+    border-radius: 12px;
+    max-height: 244px;
+    overflow: auto;
+}
+
+#gerador-table-frame {
+    background-color: var(--purple-tertiary);
+    border-radius: 20px;
+    padding: 0px 0px 0px 0px;
+
+}
+
+#gerador-table-frame th {
+    padding: 8px;
+    border-bottom-color: var(--purple-quaternary);
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.gerador-table-data {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--gray-primary);
+}
+
+#gerador-table-frame .delete_icon {
+    color: red;
+    font-size: 32px !important;
+    cursor: pointer;
+}
+
+#gerador-table-frame .visibility_icon {
+    color: var(--purple-secondary);
+    font-size: 28px !important;
+    cursor: pointer;
+}
+
+
+#gerador-saved-numbers-table {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    border-collapse: separate;
+    border-spacing: 0px;
+}
+
+#gerador-saved-numbers-table th {
+    background-color: var(--purple-tertiary);
+    position: sticky;
+    z-index: 10;
+    top: 0px;
+}
+
+#gerador-saved-numbers-table a {
+    text-decoration: none;
+}
+
+#gerador-numbers-adsense {
+    grid-area: numbers-adsense;
+    background-color: transparent;
+    min-width: 250px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+}
+
+#gerador-text-adsense {
+    color: var(--white) !important;
+}

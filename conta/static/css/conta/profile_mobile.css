@@ -1,0 +1,224 @@
+:root {
+    --purple-primary: #580091;
+    --purple-secondary: #9A00FF;
+    --purple-tertiary: #F7EFFF;
+    --purple-quaternary: #E6D3F9;
+    --purple-light: #FBF8FE;
+    --gray-primary: #2D3940;
+    --gray-secondary: #4A565D;
+    --gray-tertiary: #47494A;
+    --gray-quaternary: #7D919C;
+    --gray-light: #F2F3F4;
+    --dark-gray: #18262D;
+    --blue-primary: #0089B4;
+    --blue-secondary: #E4F5FB;
+    --blue-tertiary: #E4ECF1;
+    --orange-dark: #D96500;
+    --orange-light: #FFE5CE;
+    --pink-light: #FFDCF0;
+    --green-primary: #003B03;
+    --green-dark: #00A175;
+    --green-light: #D4FBF0;
+    --red-primary: #9e0f1c;
+    --red-secondary: #e60015;
+    --red-tertiary: #ff0015;
+    --white: #ffffff;
+
+}
+
+@media only screen and (max-width: 1150px) {
+
+    #profile-grid h1 {
+        font-family: 'Quicksand', sans-serif;
+        font-size: 40px;
+        color: var(--gray-secondary);
+    }
+
+    #profile-grid h2 {
+        font-family: 'Quicksand', sans-serif;
+        font-size: 30px;
+        color: var(--gray-secondary);
+    }
+
+    #profile-grid h3 {
+        font-family: 'Quicksand', sans-serif;
+        font-size: 25px;
+        font-weight: 700;
+        color: var(--purple-primary);
+    }
+
+    #profile-grid h4 {
+        font-family: 'Quicksand', sans-serif;
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--purple-primary);
+        padding: 6px 0px 6px 0px;
+    }
+
+    #profile-grid {
+        max-width: 98.25%;
+        height: 98%;
+        padding-top: 10px;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(2, auto);
+        gap: 8px;
+        grid-template-areas: 
+            "data"
+            "adsense"
+            ;
+    }
+
+    #profile-menu {
+        grid-area: data;
+        background-color: var(--white);
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    /* messages */
+    #messages-bar {
+        padding: 0px 0px 10px 0px;
+        width: 200px !important;
+    }
+
+    ul.messages {
+        margin: 0px 0px 0px ;
+        padding:0;
+        list-style-type: none;
+    }
+    ul.messages li.success,
+    ul.messages li.warning,
+    ul.messages li.error,
+    ul.messages li.info {
+        font-family: 'Quicksand', sans-serif;
+        font-size: 16px;
+        font-weight: 500;
+        margin:0;
+        padding: 6px 10px 10px 10px;
+        border-radius: 12px;
+        list-style: none;
+        color: var(--green-primary);
+    }
+
+    ul.messages li.success { background:#81ce81; }
+    ul.messages li.success a {
+        border:0;
+        margin:0;
+        padding: 0;
+        color: var(--green-primary);
+        text-decoration: none;
+        box-shadow:none;
+        text-shadow:none;
+    }
+
+    ul.messages li.error { background:#a30029; color:#e9828e; }
+    ul.messages li.error a { color:#e9828e; }
+
+    ul.messages li.info { background:#faffae; color:#696b4e; }
+    ul.messages li.info a { color:#1586de; }
+
+    ul.messages li.warning { background:#de9404; }
+    ul.messages li.warning a { color:#f49000; }
+
+    ul.messages li a.close p {
+        font-size: inherit;
+        margin:0;
+        padding: 0;
+        opacity:1;
+        border:0;
+        float: right;
+        box-shadow:none;
+        text-shadow:none;
+    }
+
+    #profile-menu label {
+        font-family: 'Quicksand', sans-serif;
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--purple-primary);
+        padding: 6px 0px 6px 0px;
+    }
+
+    #profile-menu input {
+        width: 200px;
+        height: 45px;
+        background-color: var(--purple-tertiary);
+        border: none;
+        border-radius: 12px;
+        padding-left: 8px;
+        color: var(--purple-primary);
+        margin-bottom: 20px;  
+        font-size: 15px;
+    }
+
+    #profile-menu input:focus {
+        outline: none;
+    }
+
+    #profile-menu input:disabled {
+        background-color: var(--purple-light);
+    }
+
+
+    #profile-save-button {
+        font-family: 'Quicksand', sans-serif;
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--white);
+        background-color: var(--purple-primary);
+        height: 45px;
+        width: 200px;
+        border: 0px solid var(--purple-primary);
+        border-radius: 12px;
+        cursor: pointer;
+        margin-top: 30px;
+    }
+
+    #profile-save-button:hover {
+        background-color: var(--purple-secondary);
+    }
+
+    #profile-delete-button {
+        font-family: 'Quicksand', sans-serif;
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--white);
+        background-color: var(--red-primary);
+        height: 45px;
+        width: 200px;
+        border: 0px solid var(--purple-primary);
+        border-radius: 12px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    #profile-delete-button:hover {
+        background-color: var(--red-secondary);
+    }
+
+    #profile-empty {
+        grid-area: empty;
+        background-color: var(--white);
+        border-radius: 12px;
+    }
+
+    #profile-adsense {
+        grid-area: adsense;
+        background-color: transparent;
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    #profile-adsense h1 {
+        text-align: center;
+        color: var(--white);
+
+    }
+
+}
+

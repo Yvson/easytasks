@@ -1,0 +1,36 @@
+{% extends "tempo_base.html" %}
+
+{% load static %}
+
+{% block title %} Easytasks - Temporizador {% endblock %}
+
+{% block timeapp %}
+    <div id="tempo-page-content">
+        <div id="tempo-grid">
+        </div>
+        <audio id="alarm-sound">
+            <source src="{% static 'sounds/alarmClock5s.mp3' %}" type="audio/mp3">
+            <source src="{% static 'sounds/alarmClock5s.wav' %}" type="audio/wav">
+            <source src="{% static 'sounds/alarmClock5s.ogg' %}" type="audio/ogg">
+        </audio>
+        <div id="tempo-timer-grid-adsense">
+            {% include "adsense_base.html" with personalizedAds=cookies.cookie.cookie_marketing.status %}
+        </div>        
+    </div>
+    
+{% endblock %}
+
+{% block script %}
+    <script id="components-info">
+        window.mountingInfo = {
+            appName: '{{section}}',
+            component: document.getElementById('tempo-grid'),
+        };
+        
+    </script>
+
+    <script src="{% static 'js/tempo.js' %}"></script>
+
+{% endblock %}
+
+

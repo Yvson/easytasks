@@ -1,0 +1,17 @@
+{% load i18n %}
+
+{% autoescape off %}
+Recuperação de Senha
+
+Olá {{ user.get_username }},
+
+Conforme solicitado pelo e-mail {{ email }}, acesse o link abaixo para estabelecer uma nova senha:
+
+{{ protocol }}://{{ domain }}{% url "password_reset_confirm" uidb64=uid token=token %}
+
+{% translate "Thanks for using our site!" %}
+
+{% blocktranslate %}The {{ site_name }} team{% endblocktranslate %}
+
+Você recebeu esse email por conta de uma solicitação de recuperação de senha enviada ao site da Easytasks. Se você não solicitou a recuperação da senha, entre em contato através do <a href="{{ protocol }}://{{ domain }}{% url 'contact_view' %}">link</a>.
+{% endautoescape %}

@@ -1,0 +1,48 @@
+{% extends "conta_base.html" %}
+
+{% load static %}
+
+{% block title %} Easytasks - Perfil {% endblock %}
+
+{% block conta_content %}
+
+<div id="profile-grid">
+    <div id="profile-menu">
+        <div id="messages-bar">
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li class="{{ message.tags }}">
+                            {{ message|safe }}
+                            <a href="{% url 'profile_view' %}" class="close"><p>x</p></a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        <form id="profile-data-form" method="POST">
+            {% csrf_token %}
+            {% for field in user_form.visible_fields %}
+                <label> {{field.label_tag}} </label>
+                <br>
+                {{ field }}
+                <br>
+
+            {% endfor %}
+            <button id="profile-save-button" type="submit" value="Save">Salvar</button>
+        </form>
+        <a href="{% url 'profile_delete' %}">
+            <button id="profile-delete-button" type="submit" value="Delete">Excluir Conta</button>
+        </a>
+        
+    </div>
+    <div id="profile-empty">
+    </div>
+
+    <div id="profile-adsense">
+        {% include "adsense_base.html" with personalizedAds=cookies.cookie.cookie_marketing.status %}
+    </div>
+
+</div>
+
+{% endblock %}

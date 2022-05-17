@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %} Easytasks - Cores {% endblock %}
+
+{% block content %}
+<div class="cores-page">
+    <h1 id="page-title"> Cores </h1>
+
+    <hr id="horizontal-line">
+
+    <div class="cores-page-menu">
+        <ul class="cores-menu-list">
+            <a href="{% url 'cores_view' 'analogo' %}">
+                <li class="cores-menu-option {% if section == 'analogo' %} menu-option-selected {% endif %}" id="analogous-option">
+                    Análogo
+                </li>
+            </a>
+            <a href="{% url 'cores_view' 'monocromatico' %}">
+                <li class="cores-menu-option {% if section == 'monocromatico' %} menu-option-selected {% endif %}" id="monochromatic-option">
+                    Monocromático
+                </li>
+            </a>
+            <a href="{% url 'cores_view' 'triade' %}">
+                <li class="cores-menu-option {% if section == 'triade' %} menu-option-selected {% endif %}" id="triad-option">
+                    Tríade
+                </li>
+            </a>
+            <a href="{% url 'cores_view' 'complementar' %}">
+                <li class="cores-menu-option {% if section == 'complementar' %} menu-option-selected {% endif %}" id="complementary-option">
+                    Complementar
+                </li>
+            </a>
+            <a href="{% url 'cores_view' 'quadrado' %}">
+                <li class="cores-menu-option {% if section == 'quadrado' %} menu-option-selected {% endif %}" id="square-option">
+                    Quadrado
+                </li>
+            </a>
+        </ul>
+    </div>
+ 
+    <div id="cores-page-content">
+        <div id="cores-grid">
+        </div>
+
+        <div id="cores-adsense">
+            {% include "adsense_base.html" with personalizedAds=cookies.cookie.cookie_marketing.status %}
+        </div>
+
+    </div>
+
+{% endblock %}
+
+
+<script>
+{% block firstScript %}
+        window.react_mount = document.getElementById('cores-grid');
+        window.section = '{{section}}';
+
+        {% if colors == None %}
+            window.colors = [];
+        {% else %}
+            {% autoescape off %}
+                window.colors = {{colors}};
+            {% endautoescape %}
+        {% endif %}
+
+        window.saveColor = function(colorToSave) {
+
+            let payload = {
+                color: String(colorToSave),
+            }
+    
+            var data = new FormData();
+            data.append('json', JSON.stringify(payload));
+    
+            var myInit = {
+                headers: {
+                    'X-CSRFToken': csrftoken,
+                    },
+                body: data,
+                method: 'POST',
+                mode: 'same-origin',
+            };
+            const request = new Request( "{{ request.path }}", myInit);
+            let URL;
+            fetch(request).then(function(response) {
+                if (response.status === 200) {
+                    URL = response.url;
+                    switch (response.redirected) {
+                        case true:
+                            return response;
+                        default:
+                            return response.json();
+                    }
+                } else {
+                    throw new Error('Something went wrong on api server!');
+                }
+            }).then(function(data) {
+                if (data.status === 'Exceeded Limit.') {
+                    alert('Você atingiu o limite máximo de 18 itens.');
+                } else {
+                    window.location.assign(URL);
+                }
+            });
+        };
+
+        window.deleteColors = function(colorsIds) {
+
+            // FetchAPI
+            var payload = {
+                colorsIds: colorsIds,
+            };
+
+            var myInit = {
+                headers: {
+                    'X-CSRFToken': csrftoken,
+                    'Content-Type': 'application/json',
+                    },
+                body: JSON.stringify(payload),
+                method: 'DELETE',
+                mode: 'same-origin',
+            };
+            const request = new Request("{{ request.path }}", myInit);
+            fetch(request).then(function(response) {
+                if (response.status === 200 || response.status === 405) {
+                    window.location.assign(response.url);
+                } else {
+                    throw new Error('Something went wrong on api server!');                    
+                }
+            });        
+        };
+
+{% endblock %}
+</script>
+
+{% block coresScript %}
+    <script src="{% static 'js/cores.js' %}"></script>
+{% endblock%}

@@ -1,0 +1,50 @@
+{% extends "suporte_base.html" %}
+
+{% load static %}
+
+{% block title %} Easytasks - Contato {% endblock %}
+
+{% block suporte_content %}
+<div id="contact-grid" class="contact-page">
+
+    <div id="messages-bar">
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li class="{{ message.tags }}">
+                        {{ message|safe }}
+                        <a href="{% url 'contact_view' %}" class="close"><p>x</p></a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+    <div id="contact-form">
+        <h3>Para entrar em contato, preencha os campos abaixo. </h3>
+        <form method="POST" action="">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            {% for field in form %}
+                <div>
+                    {{ field.errors }}
+                    <br />
+                    {{ field.label_tag }}
+                    <br />
+                    {{ field }}
+                    {% if field.help_text %}
+                        <p class="help">{{ field.help_text|safe }}</p>
+                    {% endif %}
+                </div>
+            {% endfor %}
+            <button id="form-send-button" type="submit" value="submit">Enviar</button>
+        </form>
+        
+
+    </div>
+
+    <div id="contact-adsense">
+        {% include "adsense_base.html" with personalizedAds=cookies.cookie.cookie_marketing.status %}
+    </div>
+
+</div>
+{% endblock %}

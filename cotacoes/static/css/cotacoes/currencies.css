@@ -1,0 +1,202 @@
+:root {
+    --purple-primary: #580091;
+    --purple-secondary: #9A00FF;
+    --purple-tertiary: #F7EFFF;
+    --purple-quaternary: #E6D3F9;
+    --purple-light: #FBF8FE;
+    --gray-primary: #2D3940;
+    --gray-secondary: #4A565D;
+    --gray-tertiary: #47494A;
+    --gray-quaternary: #7D919C;
+    --gray-light: #F2F3F4;
+    --dark-gray: #18262D;
+    --blue-primary: #0089B4;
+    --blue-secondary: #E4F5FB;
+    --blue-tertiary: #E4ECF1;
+    --orange-dark: #D96500;
+    --orange-light: #FFE5CE;
+    --pink-light: #FFDCF0;
+    --green-dark: #00A175;
+    --green-light: #D4FBF0;
+    --red-primary: #9e0f1c;
+    --red-secondary: #e60015;
+    --red-tertiary: #ff0015;
+    --white: #ffffff;
+
+}
+
+#currencies-grid h1 {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 40px;
+    color: var(--gray-secondary);
+}
+
+#currencies-grid h2 {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 30px;
+    color: var(--gray-secondary);
+}
+
+#currencies-grid h3 {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 25px;
+    font-weight: 700;
+    color: var(--purple-primary);
+}
+
+#currencies-grid h4 {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--purple-primary);
+    padding: 6px 0px 6px 0px;
+}
+
+
+#currencies-grid {
+    max-width: 98.25%;
+    height: 98%;
+    padding-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    gap: 8px;
+    grid-template-areas: 
+        "sidebar table table table table adsense"
+        ;
+}
+
+#currencies-sidebar {
+    grid-area: sidebar;
+    background-color: var(--white);
+    border-radius: 12px;
+}
+
+.currencies-div-text label {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--purple-primary);
+}
+
+.format-currencies-below-label {
+    padding: 6px 0px 0px 0px;
+}
+
+#currencies-reference .currencies-input-data-select {
+    width: 16rem;
+    height: 40px;
+    border: 2px solid var(--purple-secondary);
+    border-radius: 8px;
+    padding-left: 10px;
+    color: var(--purple-secondary);
+    
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    text-align: left;
+}
+
+#currencies-reference-input {
+    background-color: var(--purple-tertiary);
+    color: var(--purple-primary) !important;
+    border: none !important;
+    outline: none !important;
+}
+
+#currencies-reference-input {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-o-appearance: none;
+	appearance: none;
+	background-image: url('../../images/arrow-down.svg');
+	background-position: 100% center;
+	background-repeat: no-repeat;
+	outline: none;
+
+}
+
+#currencies-update, #currencies-source {
+    padding: 50px 0px 0px 0px;
+}
+
+#currencies-update-date {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--purple-primary);
+}
+
+#currencies-update-time {
+    font-weight: 400;
+}
+
+#currencies-source-title {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--purple-primary);
+}
+
+#currencies-data {
+    grid-area: table;
+    background-color: var(--white);
+    border-radius: 12px;
+    max-height: 759px;
+    overflow: auto;
+}
+
+#currencies-time-table {
+    width: 100%;
+    text-align: center;
+    border-collapse: separate;
+    border-spacing: 0px;
+}
+
+#currencies-time-table th {
+    width: 25%;
+    background-color: var(--white);
+    position: sticky;
+    z-index: 10;
+    top: 0px;
+
+    font-size: 20px;
+    padding: 10px 0px 10px 0px;
+    color: var(--purple-primary);
+    border-bottom: 2px solid var(--purple-secondary);
+
+}
+
+#currencies-time-table td {
+    font-size: 18px;
+    padding: 12px 0px 12px 0px;
+    cursor: pointer;
+    border-bottom: 1px solid var(--purple-quaternary);
+
+}
+
+.currencies-table-row-data {
+    cursor: pointer;
+    border-bottom: 1px solid var(--purple-quaternary);
+}
+
+.currencies-table-row-data:hover {
+    background-color: var(--purple-tertiary);
+}
+
+#currencies-adsense {
+    grid-area: adsense;
+    background: transparent;
+    min-width: 250px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#currencies-adsense h1 {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 40px;
+    color: var(--white);
+    text-align: center;
+}

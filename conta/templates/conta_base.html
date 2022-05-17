@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %} Easytasks - Conta {% endblock %}
+
+{% block content %}
+<div class="conta-page">
+    <h1 id="page-title"> Conta </h1>
+
+    <hr id="horizontal-line">
+
+    <div class="conta-page-menu">
+        <ul class="conta-menu-list">
+            <a href="{% url 'profile_view' %}">
+                <li class="conta-menu-option {% if section == 'profile' %} menu-option-selected {% endif %}" id="profile-option">
+                    Perfil
+                </li>
+            </a>
+            <a href="{% url 'password_change' %}">
+                <li class="conta-menu-option {% if section == 'password' %} menu-option-selected {% endif %}" id="security-option">
+                    Segurança
+                </li>
+            </a>
+        </ul>
+    </div>
+
+    <div id="conta-page-content">
+        {% block conta_content %}
+        {% endblock %}
+    </div>
+
+</div>
+ 
+
+{% endblock %}

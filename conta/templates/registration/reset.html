@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %} Easytasks - Resetar Senha {% endblock %}
+
+{% block content %}
+<div class="reset-page">
+
+    <h1 id="page-title"> Resetar Senha. </h1>
+
+    <hr id="horizontal-line">
+
+    <h3 id="page-subtitle"> Para estabelecer uma nova senha, preencha
+        os campos abaixo.
+    </h3>
+
+    <div id="main-reset-form">
+        {% if validlink %}
+            <form id="reset-form" method="post">
+                {% csrf_token %}
+                {% for field in form.visible_fields %}
+                    <div class="error-tag"> {{ field.errors }}</div>
+                    <label>{{ field.label_tag }}</label>
+                    <br/>
+                    {{ field }}
+                    <br/>
+                    {% if field.help_text %}
+                        {{ field.help_text|safe }}
+                        <br/>
+                    {% endif %}                    
+                {% endfor %}
+                <button id="form-reset-button" type="submit">Resetar Senha</button>
+            </form>
+        {% else %}
+            <div class="error-tag">
+                <p>
+                    O link de recuperação de senha é <span class="bold-text">inválido</span>, possivelmente,
+                    por que já foi utilizado. Por favor, faça uma nova solicitação.
+                </p>
+            </div>
+        {% endif %}
+
+</div>
+
+{% endblock %}

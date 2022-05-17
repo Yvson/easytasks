@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %} Easytasks - Ativação {% endblock %}
+
+{% block content %}
+<div class="activation-done-page">
+
+    <h1 id="page-title"> Ativação. </h1>
+
+    <hr id="horizontal-line">
+
+    <h3 id="page-subtitle"> Ativação Concluída. </h3>
+
+    <div id="main-activation-done-page-grid">
+    
+        <div id="activation-done-page-message">
+            <br />
+            <h3>
+                <strong>{{ user.first_name }}</strong>, 
+                a ativação da sua conta foi concluída com sucesso.
+            </h3>
+        </div>
+
+        <div id="activation-done-page-adsense">
+            {% include "adsense_base.html" with personalizedAds=cookies.cookie.cookie_marketing.status %}
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

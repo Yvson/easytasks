@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %} Easytasks - Login {% endblock %}
+
+{% block content %}
+<div class="login-page">
+    <h1 id="page-title"> Entrar. </h1>
+    <hr id="horizontal-line">
+    <h3 id="page-subtitle"> Faça o login com as informações fornecidas durante o cadastro. </h3>
+
+    <div id="login-page-grid">
+        <div id="login-page-content">
+            {% if form.errors %}
+                <div id="error-div">
+                    {% for error in form.non_field_errors %}
+                        <p id="error-tag" class="error"> {{ error }} </p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            {% for hidden_field in form.hidden_fields %}
+                {{ hidden_field }}
+            {% endfor %}
+
+            <div id="main-login-form"> 
+                <form id="login-form" action="{% url 'login' %}" method="post" >
+                    {% csrf_token %}
+
+                    <h4> Usuário ou Email </h4>
+                    {{ form.username }}
+
+                    <h4> Senha </h4>
+                    {{ form.password }}
+
+                    <div id="checkbox-login-form">
+                        <!--<label class="checkbox-container text-below-pwd">Lembrar Senha
+                            <input type="checkbox" id="remember-pwd">
+                            <span class="checkbox-checkmark"></span>
+                        </label>-->
+                        <a style='text-decoration: none;' href="{% url 'password_reset' %}"><p id="lost-pwd" class="text-below-pwd">Esqueceu a Senha?</p></a>
+
+                    </div>
+                    <input type="hidden" name="next" value="{{ next }}" />
+                    <button type="submit" id="form-login-button" value="login">Entrar</button>
+                </form>
+                <p id="register"> Não possui cadastro? <a style="text-decoration: none;" href="{% url 'register' %}"><span id="register-call">Cadastre-se</span></a>
+            </div>
+        </div>
+        <div id="login-page-adsense">
+            {% include "adsense_base.html" with personalizedAds=cookies.cookie.cookie_marketing.status %}
+        </div>
+
+    </div>
+
+</div>
+
+
+
+{% endblock %}
