@@ -105,6 +105,7 @@
 
 #adsense {
     background-color: transparent;
+    min-width: 250px;
     grid-area: adsense;
     border-radius: 16px;
     text-align: center;

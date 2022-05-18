@@ -112,7 +112,7 @@ REST_FRAMEWORK = {
 COOKIES_SESSION_ID = 'cookie'
 
 # WHITENOISE
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+#STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # CELERY
 CELERY_BEAT_SCHEDULE = {
@@ -131,3 +131,6 @@ CELERY_BEAT_SCHEDULE = {
         },
     },
 }
+
+# EMAIL
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

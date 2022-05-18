@@ -93,7 +93,8 @@
 
 #activation-done-page-adsense {
     grid-area: adsense;
-    background-color: var(--purple-quaternary);
+    background-color: transparent;
+    min-width: 250px;
     border-radius: 12px;
     margin: 10px 10px 10px 10px;
     display: flex;
