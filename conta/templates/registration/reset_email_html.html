@@ -23,11 +23,11 @@
          <table cellspacing="0" cellpadding="0" border="0" width="480">
            <tr>
               <td style="background-color: #F7EFFF; padding: 18px; text-align: center;">
-                <!--<img alt="Easytasks" src="{{ protocol }}://{{ domain }}{% static 'images/logo/easytasks_logo.png' %}">-->
+                <!--<h2 id="logo-text" style="font-family: 'Quicksand', sans-serif; font-size: 42px; color: #9A00FF;">
+                  easy<span id="logo-tasks" style="color: #580091;">tasks</span>
+                </h2>-->
                 <a href="{{ protocol }}://{{ domain }}{% url 'dashboard:dashboard_view' %}" style="text-decoration: none;">
-                  <h2 id="logo-text" style="font-family: 'Quicksand', sans-serif; font-size: 42px; color: #9A00FF;">
-                    easy<span id="logo-tasks" style="color: #580091;">tasks</span>
-                  </h2>
+                  <img alt="Easytasks" src="{{ protocol }}://{{ domain }}{% static 'images/logo/easytasks_email_header.png' %}">
                 </a>
               </td>
            </tr>
