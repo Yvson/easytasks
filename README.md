@@ -59,8 +59,9 @@
 
 
 ## Hosting
-Git + Github (Continuous Integration)
-Railway.app (Continuous Delivery) - _[Referral Link]_
+- Git + Github (Continuous Integration)
+- Railway.app (Continuous Delivery) - _[Referral Link]_
+
 
 
 [easytasks]: <https://www.easytasks.com.br/>
