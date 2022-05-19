@@ -121,7 +121,7 @@ def update_currency():
                     source='AwesomeAPI'
                 )
                 currency_item.save()
-            currencies = Currency.objects.filter(date__lte = now() - timedelta(minutes=5))
+            currencies = Currency.objects.filter(date__lte=(now() - timedelta(minutes=5)))
             currencies.delete()
 
             return 'Currency data updated.'

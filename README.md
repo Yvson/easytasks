@@ -11,7 +11,9 @@
 5. **[Tempo]** (Time, Timer and Stopwatch)
 6. **[Cotações]** (Currencies Exchange Rates)
 
+
 ## Things Handled
+
 - **Design made with Figma**
 	- _Logo_
 	- _Template_
