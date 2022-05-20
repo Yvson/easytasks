@@ -11,7 +11,7 @@ cryptocurrency_list = ['btc', 'eth', 'zec', 'ltc', 'bnb', 'ada', 'dot']
 class CurrencyListView(generics.ListAPIView):
     serializer_class = CurrencySerializer
 
-    @method_decorator(cache_page(60))
+    @method_decorator(cache_page(60*2))
     def get(self, request, *args, **kwargs):
         return self.list(request, *args, **kwargs)
 
@@ -27,7 +27,7 @@ class CurrencyListView(generics.ListAPIView):
 class CryptocurrencyListView(generics.ListAPIView):
     serializer_class = CryptocurrencySerializer
 
-    @method_decorator(cache_page(60))
+    @method_decorator(cache_page(60*2))
     def get(self, request, *args, **kwargs):
         return self.list(request, *args, **kwargs)
 
