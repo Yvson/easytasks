@@ -120,14 +120,14 @@ CELERY_BEAT_SCHEDULE = {
         'task': 'cotacoes.tasks.update_cryptocurrency',
         'schedule': 60.0,
         'options': {
-            'expires': 30.0,
+            'expires': 45.0,
         },
     },
     'update-currency-every-60-seconds': {
         'task': 'cotacoes.tasks.update_currency',
         'schedule': 60.0,
         'options': {
-            'expires': 30.0,
+            'expires': 45.0,
         },
     },
 }
