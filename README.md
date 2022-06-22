@@ -1,7 +1,8 @@
-| |
-| :--: |
-| ![easytasks-logo](https://www.easytasks.com.br/static/images/logo/easytasks_logo.png)|
-| *The [easytasks] website was made to demonstrate the basic level of proficiency with the following Stack: React.js + Django + PostgreSQL.* |
+![easytasks_github_header](https://github.com/Yvson/easytasks/blob/master/github_header.png)
+
+
+The [easytasks] website was made to demonstrate the basic level of proficiency with the following Stack: React.js + Django + PostgreSQL.
+
 
 ## Features
 1. **[Conversor]** (Unit Converter)
