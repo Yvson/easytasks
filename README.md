@@ -1,4 +1,4 @@
-![easytasks_github_header](https://github.com/Yvson/easytasks/blob/master/github_header.png)
+![easytasks_github_header](https://raw.githubusercontent.com/Yvson/easytasks/main/github_header.png)
 
 
 The [easytasks] website was made to demonstrate the basic level of proficiency with the following Stack: React.js + Django + PostgreSQL.
