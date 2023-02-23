@@ -62,7 +62,7 @@ The [easytasks] website was made to demonstrate the basic level of proficiency w
 
 
 ## Hosting
-- Git + Github (Continuous Integration)
+- Git + Github + Railway (Continuous Integration)
 - Railway.app (Continuous Delivery) - _[Referral Link]_
 
 
