@@ -5,7 +5,7 @@ env = environ.Env()
 environ.Env.read_env(os.path.join(BASE_DIR, 'settings/.env.development'))
 
 SECRET_KEY = env("SECRET_KEY")
-DEBUG = env.bool("DEBUG", False)
+DEBUG = env.bool("DEBUG", True)
 
 ALLOWED_HOSTS = env.list("ALLOWED_HOSTS")
 
@@ -18,6 +18,7 @@ STATIC_URL = env("STATIC_URL")
 INSTALLED_APPS = INSTALLED_APPS + ["django_extensions"]
 
 CORS_ALLOW_ALL_ORIGINS = True
+SECURE_SSL_REDIRECT = False
 
 # CACHE
 CACHE_MIDDLEWARE_SECONDS = 60

@@ -26,9 +26,9 @@ export default class Tempo extends React.Component {
         const day = newDate.slice(0, 2);
         const monthIndex = String(parseInt(newDate.slice(3, 5))-1);
         const year = newDate.slice(6, 10);
-        const hours = newDate.slice(11, 13);
-        const minutes = newDate.slice(14, 16);
-        const seconds = newDate.slice(17, 19);
+        const hours = newDate.slice(12, 14);
+        const minutes = newDate.slice(15, 17);
+        const seconds = newDate.slice(18, 20);
         const finalDate = new Date(year, monthIndex, day, hours, minutes, seconds);
         return finalDate;
     }
