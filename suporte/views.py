@@ -4,7 +4,6 @@ from django.core.mail import send_mail
 from django.http import HttpResponseRedirect
 from django.contrib import messages
 
-
 from .forms import ContactForm
 
 
@@ -67,12 +66,13 @@ class ContactTemplateView(TemplateView):
             email = cd['email']
             subject = f"{name} - Contato Easytasks"
             message = f"Sender: {email}\nMessage: {cd['message']}"
-            
+
             send_mail(
                 subject=subject,
-                from_email=email,
-                recipient_list=['yvsonexs@gmail.com'],
+                from_email=None,
+                recipient_list=['yvsonexs@gmail.com', 'contato@easytasks.com.br'],
                 message=message,
+                fail_silently=False
             )
             return HttpResponseRedirect(reverse('contact_sent_view'))
         else:

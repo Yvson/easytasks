@@ -1,14 +1,14 @@
-Django==4.0.4
+Django==4.2.7
 django-environ==0.8.1
 django-ipware==4.0.2
-djangorestframework==3.13.1
+djangorestframework==3.14.0
 django-cors-headers==3.12.0
 psycopg2-binary==2.9.3
 pycoingecko==2.2.0
 pytz==2022.1
 requests==2.27.1
 django-extensions==3.1.5
-uWSGI==2.0.20
+uWSGI==2.0.23
 whitenoise==6.1.0
 celery[redis]==5.2.6
 flower==1.0.0
